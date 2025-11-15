@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dclrpbocvc31u"]
+[gd_scene load_steps=2 format=3 uid="uid://dclrpbocvc31u"]
+
+[ext_resource type="Script" uid="uid://bk8w8ra5v83q8" path="res://menus/start_menu.gd" id="1_3kg5v"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -7,9 +9,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3kg5v")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 text = "Start menu"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "options"
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "credits"

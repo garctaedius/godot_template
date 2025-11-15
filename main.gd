@@ -1,5 +1,5 @@
-extends Node
-
+extends Menu
+class_name MainMenu
 
 func _ready():
 	call_deferred("ready_main_menu")
@@ -15,6 +15,7 @@ func _process(_delta):
 		swap_fullscreen_mode()
 	
 func swap_fullscreen_mode():
+	# TODO: fix for new game window
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MAXIMIZED:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
