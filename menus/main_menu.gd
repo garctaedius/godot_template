@@ -30,6 +30,7 @@ func _show_menu(menu):
 			child.hide()
 
 func _connect_start_menu():
+	# TODO: add connection for start button
 	start_menu.options_button.connect("pressed", show_options_menu)
 	start_menu.credits_button.connect("pressed", show_credits_menu)
 

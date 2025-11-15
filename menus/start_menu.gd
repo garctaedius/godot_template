@@ -1,6 +1,7 @@
 extends Menu
 class_name StartMenu
 
+@onready var start_button = %StartButton
 @onready var options_button = %OptionsButton
 @onready var credits_button = %CreditsButton
 

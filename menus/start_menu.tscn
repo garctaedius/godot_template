@@ -31,12 +31,17 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
+[node name="StartButton" type="Button" parent="MarginContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Game"
+
 [node name="OptionsButton" type="Button" parent="MarginContainer/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "options"
+text = "Options"
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "credits"
+text = "Credits"
