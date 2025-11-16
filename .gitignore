@@ -16,3 +16,7 @@ data_*/
 mono_crash.*.json
 
 pat.txt
+
+# Licenced files
+game/levels/assets/tilesets/*.png
+game/levels/assets/tilesets/*.import

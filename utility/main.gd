@@ -6,7 +6,7 @@ func _ready():
 
 # TODO: connect buttons to start game
 func ready_main_menu():
-	var main_menu_scene = "res://menus/main_menu.tscn"
+	var main_menu_scene = "res://ui/menus/main_menu/main_menu.tscn"
 	var main_menu = load(main_menu_scene).instantiate()
 	add_child(main_menu)
 

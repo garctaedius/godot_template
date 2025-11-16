@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bf35m4iqplyl7"
-path="res://.godot/imported/SMW.ttf-d5961c9cfcb0c65f3a8363445296b06f.fontdata"
+path="res://.godot/imported/SMW.ttf-baac0c966e715514538bafbb6401c078.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/SMW.ttf"
-dest_files=["res://.godot/imported/SMW.ttf-d5961c9cfcb0c65f3a8363445296b06f.fontdata"]
+source_file="res://general_assets/fonts/SMW.ttf"
+dest_files=["res://.godot/imported/SMW.ttf-baac0c966e715514538bafbb6401c078.fontdata"]
 
 [params]
 

@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://e1k0dg75nqg5"]
+[gd_scene load_steps=2 format=3 uid="uid://13wcsxkv73xt"]
 
-[ext_resource type="Script" uid="uid://l7mm8rcq61f8" path="res://menus/credits_menu.gd" id="1_vbcsv"]
+[ext_resource type="Script" uid="uid://bp2xv7x2egvrv" path="res://ui/menus/options_menu/options_menu.gd" id="1_6r3ve"]
 
-[node name="CreditsMenu" type="Control"]
+[node name="OptionsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vbcsv")
+script = ExtResource("1_6r3ve")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -23,13 +23,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "Credits"
+text = "Options menu"
 horizontal_alignment = 1
-
-[node name="Credits" type="Label" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Game template made by destmon_vs_god"
 
 [node name="BackButton" type="Button" parent="MarginContainer"]
 unique_name_in_owner = true
