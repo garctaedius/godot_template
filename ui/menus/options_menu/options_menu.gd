@@ -1,8 +1,3 @@
-extends Menu
-class_name OptionsMenu
+class_name OptionsMenu extends Menu
 
 @onready var back_button = %BackButton
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.

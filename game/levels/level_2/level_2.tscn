@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://djlg8175xtupf"]
+
+[ext_resource type="Script" uid="uid://bbmtuxqida1w0" path="res://game/levels/level.gd" id="1_3tvvw"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_3tvvw")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 2"
+
+[node name="NextLevel" type="Button" parent="."]
+offset_left = 305.0
+offset_top = 175.0
+offset_right = 399.0
+offset_bottom = 206.0
+text = "Finish level"

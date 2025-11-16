@@ -1,15 +1,32 @@
-extends Menu
-class_name MainMenu
+class_name Main extends Node
+
+@onready var scene_holder: Node = %SceneHolder
+
+var current_scene: TopLevelNode = null
 
 func _ready():
-	call_deferred("ready_main_menu")
+	call_deferred("load_main_menu")
+	
 
 # TODO: connect buttons to start game
-func ready_main_menu():
-	var main_menu_scene = "res://ui/menus/main_menu/main_menu.tscn"
-	var main_menu = load(main_menu_scene).instantiate()
-	add_child(main_menu)
-
+func load_main_menu():
+	load_scene("res://ui/menus/main_menu/main_menu.tscn")
+	
+func load_game():
+	load_scene("res://game/game.tscn")
+	
+func load_scene(path: String):
+	# Remove the previous scene
+	if current_scene:
+		current_scene.queue_free()
+		
+	# Load the new one
+	var scene = load(path)
+	current_scene = scene.instantiate()
+	scene_holder.add_child(current_scene)
+	
+	current_scene.connect_to_main(self)
+	
 func _process(_delta):
 	if Input.is_action_just_pressed("fullscreen"):
 		swap_fullscreen_mode()

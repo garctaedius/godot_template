@@ -1,2 +1,1 @@
-extends Node
-class_name Menu
+class_name Menu extends Node

@@ -1,4 +1,4 @@
-extends Menu
+class_name MainMenu extends TopLevelNode
 
 @onready var start_menu: StartMenu = %StartMenu
 @onready var options_menu: OptionsMenu = %OptionsMenu
@@ -10,6 +10,10 @@ func _ready():
 	_connect_start_menu()
 	_connect_options_menu()
 	_connect_credits_menu()
+	
+func connect_to_main(main: Main):
+	super(main)
+	start_menu.start_button.connect("pressed", main.load_game)
 	
 func show_start_menu():
 	_show_menu(start_menu)

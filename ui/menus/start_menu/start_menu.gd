@@ -1,10 +1,5 @@
-extends Menu
-class_name StartMenu
+class_name StartMenu extends Menu
 
 @onready var start_button = %StartButton
 @onready var options_button = %OptionsButton
 @onready var credits_button = %CreditsButton
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
