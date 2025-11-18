@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cilqvuvabdmjj"]
+
+[ext_resource type="Script" uid="uid://br4nn4jduy41a" path="res://ui/elements/exit_button/exit_button.gd" id="1_kbowx"]
+
+[node name="ExitButton" type="Button"]
+offset_right = 87.0
+offset_bottom = 31.0
+text = "Exit Game"
+script = ExtResource("1_kbowx")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,23 @@
+Add sound effects and music
+
+add options:
+	sound volume
+	key bindings
+	fullscreen?
+	difficulty?
+
+add game:
+	switch textures to top down that you can redistribute
+	create two levels
+	create character that can move around and attack
+	create enemy that moves towards the player
+	
+add cut scenes
+
+add game over
+
+add save load
+
+add pause screen
+
+create exit button
