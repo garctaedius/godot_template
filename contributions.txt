@@ -1,0 +1,4 @@
+SMW font made by wye based on the font from SuperMarioWorld
+Sprites (inlcuding level tileset, character sprites, and enemy sprites) used are from ArMM1998 at https://opengameart.org/content/zelda-like-tilesets-and-sprites
+
+Thanks a lot!

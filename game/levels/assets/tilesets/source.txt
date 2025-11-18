@@ -1,4 +1,0 @@
-Tileset used is from
-https://craftpix.net/freebies/free-green-zone-tileset-pixel-art/?srsltid=AfmBOorc7-ZWiW3H1ShzoRUZWSZYpGJ7tKAqzU3bGsGTM_73JBfY7gHT
-
-simply download the files and paste the "Objects.png", "Tileset.png", and "Trees.png" files to this folder.
