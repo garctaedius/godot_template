@@ -26,7 +26,8 @@ func load_current():
 	current_level_scene = load(level_sequence[current_level_index]).instantiate()
 	current_level_scene.connect_to_game(self)
 	
-	level_holder.add_child(current_level_scene)
+	level_holder.add_child.call_deferred(current_level_scene)
+	
 	
 func _on_level_finished():
 	current_level_index += 1

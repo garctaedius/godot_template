@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcqgsaqa7ri5h"]
+
+[ext_resource type="Script" uid="uid://dg0oi10nfy78" path="res://game/entities/goal/goal.gd" id="1_a6q4a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4iy1"]
+size = Vector2(16, 16)
+
+[node name="Goal" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_a6q4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v4iy1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
