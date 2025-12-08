@@ -3,16 +3,28 @@ class_name Player extends CharacterBody2D
 @export var speed = 300.0
 
 var attacking: bool = false
-	
+var direction: String#
+
+func _ready():
+	%AnimatedSprite2D.animation = "up"
 
 func get_input():
 	if attacking:
 		return
 		
 	if Input.is_action_just_pressed("attack"):
-		print("attackign")
+		# TODO: maybe move to it's own function, and move the hitbox
+		# FOR EXAMPLE: Could have multiple collision shapes, and just
+		# activate the appropriate one when attacking (using direciton var)
+		direction = %AnimatedSprite2D.animation
+		
 		attacking = true
-		%AnimationPlayer.play("attack_up")
+		%HitBox.monitorable = true
+		%HitBox.monitoring = true
+		velocity = Vector2.ZERO
+		
+		var animation: String = "attack_" + direction
+		%AnimatedSprite2D.play(animation)
 		
 		return
 	
@@ -40,6 +52,10 @@ func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 
-
-func _on_animation_player_current_animation_changed(_name):
-	attacking = false
+func _on_animated_sprite_2d_animation_finished():
+	if attacking:
+		attacking = false
+		%HitBox.monitorable = false
+		%HitBox.monitoring = false
+		
+		%AnimatedSprite2D.animation = direction
