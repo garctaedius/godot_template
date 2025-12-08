@@ -19,6 +19,7 @@ config/icon="res://general_assets/icon.svg"
 
 window/size/viewport_width=720
 window/size/viewport_height=480
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
