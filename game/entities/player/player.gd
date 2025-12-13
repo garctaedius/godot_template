@@ -4,57 +4,22 @@ class_name Player extends CharacterBody2D
 @export var hitboxes: PlayerHitboxes
 
 var attacking: bool = false
-var direction: String#
+var direction: String
 
 func _ready():
 	%AnimatedSprite2D.animation = "up"
-
-func get_input():
-	if attacking:
-		return
-		
-	if Input.is_action_just_pressed("attack"):
-		# TODO: maybe move to it's own function, and move the hitbox
-		# FOR EXAMPLE: Could have multiple collision shapes, and just
-		# activate the appropriate one when attacking (using direction var)
-		direction = %AnimatedSprite2D.animation
-		
-		attacking = true
-		velocity = Vector2.ZERO
-		
-		var animation: String = "attack_" + direction
-		%AnimatedSprite2D.play(animation)
-		
-		hitboxes.activate(direction)
-		
-		return
-	
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
-	if input_direction.length() > 0:
-		var animation: String
-		if input_direction.x > 0:
-			animation = "right"
-		elif input_direction.x < 0:
-			animation = "left"
-		elif input_direction.y < 0:
-			animation = "up"
-		elif input_direction.y > 0:
-			animation = "down"
-			
-		%AnimatedSprite2D.play(animation)
-	else:
-		%AnimatedSprite2D.stop()
-		
-	velocity = input_direction * speed
+	%Movement.connect_to_player(self, %AnimatedSprite2D)	
+	%Attack.connect_to_player(self, %AnimatedSprite2D)	
 	
 func teleport(pos: Vector2):
 	velocity = Vector2.ZERO
 	global_position = pos
 	
-
 func _physics_process(_delta):
-	get_input()
+	if not attacking:
+		attacking = %Attack.handle_attack()
+	if not attacking:
+		%Movement.handle_movement()
 	move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished():
@@ -62,4 +27,4 @@ func _on_animated_sprite_2d_animation_finished():
 		attacking = false
 		hitboxes.deactivate()
 		
-		%AnimatedSprite2D.animation = direction
+		%AnimatedSprite2D.animation = %Attack.direction

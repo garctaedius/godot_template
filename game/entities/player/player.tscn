@@ -1,8 +1,10 @@
-[gd_scene load_steps=42 format=3 uid="uid://qfl67m68fj5n"]
+[gd_scene load_steps=44 format=3 uid="uid://qfl67m68fj5n"]
 
 [ext_resource type="Texture2D" uid="uid://bdtuqx6u1om4r" path="res://game/entities/player/assets/character.png" id="1_1a4jd"]
 [ext_resource type="Script" uid="uid://gopbw3v44p0r" path="res://game/entities/player/player.gd" id="1_gqtae"]
 [ext_resource type="PackedScene" uid="uid://ynlmtw5ql0p2" path="res://game/entities/player/hitbox/player_hitboxes.tscn" id="3_x4rrl"]
+[ext_resource type="Script" uid="uid://d2xx2oudm0vxn" path="res://game/entities/player/movement.gd" id="4_cjfdk"]
+[ext_resource type="Script" uid="uid://bhloj211seka1" path="res://game/entities/player/attack.gd" id="5_oic1i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtae"]
 radius = 4.0
@@ -320,5 +322,13 @@ animation = &"attack_left"
 frame = 2
 
 [node name="HitBoxes" parent="." instance=ExtResource("3_x4rrl")]
+
+[node name="Movement" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_cjfdk")
+
+[node name="Attack" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_oic1i")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
