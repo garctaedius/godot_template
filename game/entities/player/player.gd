@@ -15,7 +15,7 @@ func get_input():
 	if Input.is_action_just_pressed("attack"):
 		# TODO: maybe move to it's own function, and move the hitbox
 		# FOR EXAMPLE: Could have multiple collision shapes, and just
-		# activate the appropriate one when attacking (using direciton var)
+		# activate the appropriate one when attacking (using direction var)
 		direction = %AnimatedSprite2D.animation
 		
 		attacking = true
@@ -46,6 +46,10 @@ func get_input():
 		%AnimatedSprite2D.stop()
 		
 	velocity = input_direction * speed
+	
+func teleport(pos: Vector2):
+	velocity = Vector2.ZERO
+	global_position = pos
 	
 
 func _physics_process(_delta):

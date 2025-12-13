@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtae"]
 radius = 4.0
-height = 16.0
+height = 10.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s5sw"]
 atlas = ExtResource("1_1a4jd")
@@ -312,7 +312,7 @@ script = ExtResource("1_gqtae")
 speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_gqtae")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -322,6 +322,7 @@ animation = &"attack_down"
 
 [node name="HitBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, 4)
 monitoring = false
 monitorable = false

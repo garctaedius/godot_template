@@ -1,21 +1,17 @@
-[gd_scene load_steps=5 format=4 uid="uid://bpl4fcjvfkvax"]
+[gd_scene load_steps=4 format=4 uid="uid://bpl4fcjvfkvax"]
 
 [ext_resource type="Script" uid="uid://bbmtuxqida1w0" path="res://game/levels/level.gd" id="1_vbl3r"]
 [ext_resource type="TileSet" uid="uid://de57kxogybdo3" path="res://game/levels/assets/tilesets/tileset.tres" id="2_imjak"]
 [ext_resource type="PackedScene" uid="uid://bcqgsaqa7ri5h" path="res://game/entities/goal/goal.tscn" id="2_x7kt4"]
-[ext_resource type="PackedScene" uid="uid://qfl67m68fj5n" path="res://game/entities/player/player.tscn" id="3_pdyyk"]
 
-[node name="Level1" type="Node2D" node_paths=PackedStringArray("goal")]
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("goal", "spawn_pos")]
 script = ExtResource("1_vbl3r")
 goal = NodePath("Goal")
+spawn_pos = NodePath("SpawnPosition")
 
 [node name="Goal" parent="." instance=ExtResource("2_x7kt4")]
 z_index = 1
 position = Vector2(120, 49)
-
-[node name="Player" parent="." instance=ExtResource("3_pdyyk")]
-z_index = 10
-position = Vector2(255, 263)
 
 [node name="TileMap" type="Node" parent="."]
 
@@ -34,3 +30,6 @@ tile_set = ExtResource("2_imjak")
 [node name="Objects2" type="TileMapLayer" parent="TileMap"]
 tile_map_data = PackedByteArray("AAAFAP//AAAGAAAAAAAFAAAAAAAGAAEAAAAFAAEAAAAGAAIAAAAFAAIAAAAGAAMAAAAFAAMAAAAGAAQAAAAGAP//AAAHAAAAAAAGAAAAAAAHAAEAAAAGAAEAAAAHAAIAAAAGAAIAAAAHAAMAAAAGAAMAAAAHAAQAAAAHAP//AAAIAAAAAAAHAAAAAAAIAAEAAAAHAAEAAAAIAAIAAAAHAAIAAAAIAAMAAAAHAAMAAAAIAAQAAAAIAP//AAAJAAAAAAAIAAAAAAAJAAEAAAAIAAEAAAAJAAIAAAAIAAIAAAAJAAMAAAAIAAMAAAAJAAQAAAAJAP//AAAKAAAAAAAJAAAAAAAKAAEAAAAJAAEAAAAKAAIAAAAJAAIAAAAKAAMAAAAJAAMAAAAKAAQAAAA=")
 tile_set = ExtResource("2_imjak")
+
+[node name="SpawnPosition" type="Marker2D" parent="."]
+position = Vector2(229, 449)

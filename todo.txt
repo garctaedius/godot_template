@@ -7,8 +7,6 @@ add options:
 	difficulty?
 
 add game:
-	create two levels
-	create character that can move around and attack
 	create enemy that moves towards the player
 
 add cut scenes
