@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://ynlmtw5ql0p2"]
+
+[ext_resource type="Script" uid="uid://paosrb0ikyvg" path="res://game/entities/player/hitbox/player_hitboxes.gd" id="1_n0g1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqtae"]
+size = Vector2(20, 14)
+
+[node name="HitBoxes" type="Node"]
+script = ExtResource("1_n0g1n")
+
+[node name="HitBoxUp" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 4)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxUp"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_gqtae")
+
+[node name="HitBoxRight" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 4)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxRight"]
+position = Vector2(8, -1.0000002)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_gqtae")
+
+[node name="HitBoxLeft" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 4)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxLeft"]
+position = Vector2(-9, -1.0000002)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_gqtae")
+
+[node name="HitBoxDown" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 4)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxDown"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_gqtae")

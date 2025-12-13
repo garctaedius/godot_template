@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bdtuqx6u1om4r" path="res://game/entities/player/assets/character.png" id="1_1a4jd"]
 [ext_resource type="Script" uid="uid://gopbw3v44p0r" path="res://game/entities/player/player.gd" id="1_gqtae"]
+[ext_resource type="PackedScene" uid="uid://ynlmtw5ql0p2" path="res://game/entities/player/hitbox/player_hitboxes.tscn" id="3_x4rrl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtae"]
 radius = 4.0
@@ -302,14 +303,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqtae"]
-size = Vector2(20, 14)
-
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hitboxes")]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_gqtae")
-speed = 100.0
+hitboxes = NodePath("HitBoxes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
@@ -318,17 +316,9 @@ shape = SubResource("CapsuleShape2D_gqtae")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_cjfdk")
-animation = &"attack_down"
+animation = &"attack_left"
+frame = 2
 
-[node name="HitBox" type="Area2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(0, 4)
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_gqtae")
+[node name="HitBoxes" parent="." instance=ExtResource("3_x4rrl")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

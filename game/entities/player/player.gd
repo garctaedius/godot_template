@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
-@export var speed = 300.0
+@export var speed = 100.0
+@export var hitboxes: PlayerHitboxes
 
 var attacking: bool = false
 var direction: String#
@@ -19,12 +20,12 @@ func get_input():
 		direction = %AnimatedSprite2D.animation
 		
 		attacking = true
-		%HitBox.monitorable = true
-		%HitBox.monitoring = true
 		velocity = Vector2.ZERO
 		
 		var animation: String = "attack_" + direction
 		%AnimatedSprite2D.play(animation)
+		
+		hitboxes.activate(direction)
 		
 		return
 	
@@ -59,7 +60,6 @@ func _physics_process(_delta):
 func _on_animated_sprite_2d_animation_finished():
 	if attacking:
 		attacking = false
-		%HitBox.monitorable = false
-		%HitBox.monitoring = false
+		hitboxes.deactivate()
 		
 		%AnimatedSprite2D.animation = direction
