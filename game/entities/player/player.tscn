@@ -312,16 +312,17 @@ script = ExtResource("1_gqtae")
 hitboxes = NodePath("HitBoxes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_gqtae")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_cjfdk")
 animation = &"attack_left"
 frame = 2
 
 [node name="HitBoxes" parent="." instance=ExtResource("3_x4rrl")]
+position = Vector2(0, -7)
 
 [node name="Movement" type="Node" parent="."]
 unique_name_in_owner = true

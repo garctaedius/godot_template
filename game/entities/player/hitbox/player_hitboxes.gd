@@ -1,4 +1,4 @@
-class_name PlayerHitboxes extends Node
+class_name PlayerHitboxes extends Node2D
 
 
 @onready var hitboxes: Dictionary[String, Area2D] = {

@@ -5,9 +5,10 @@
 
 [node name="Game" type="Node" node_paths=PackedStringArray("player")]
 script = ExtResource("1_l1rk1")
-player = NodePath("Player")
+player = NodePath("LevelHolder/Player")
 
-[node name="LevelHolder" type="Node" parent="."]
+[node name="LevelHolder" type="Node2D" parent="."]
 unique_name_in_owner = true
+y_sort_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2_vasa2")]
+[node name="Player" parent="LevelHolder" instance=ExtResource("2_vasa2")]
