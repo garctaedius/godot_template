@@ -17,9 +17,9 @@ func teleport(pos: Vector2):
 	
 func _physics_process(_delta):
 	if not attacking:
-		attacking = %Attack.handle_attack()
+		attacking = %Attack.handle_attack(direction)
 	if not attacking:
-		%Movement.handle_movement()
+		direction = %Movement.handle_movement()
 	move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished():
@@ -27,4 +27,4 @@ func _on_animated_sprite_2d_animation_finished():
 		attacking = false
 		hitboxes.deactivate()
 		
-		%AnimatedSprite2D.animation = %Attack.direction
+		%AnimatedSprite2D.animation = direction
