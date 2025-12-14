@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://bpl4fcjvfkvax"]
+[gd_scene load_steps=5 format=4 uid="uid://bpl4fcjvfkvax"]
 
 [ext_resource type="Script" uid="uid://bbmtuxqida1w0" path="res://game/levels/level.gd" id="1_vbl3r"]
 [ext_resource type="TileSet" uid="uid://de57kxogybdo3" path="res://game/levels/assets/tilesets/tileset.tres" id="2_imjak"]
 [ext_resource type="PackedScene" uid="uid://bcqgsaqa7ri5h" path="res://game/entities/goal/goal.tscn" id="2_x7kt4"]
+[ext_resource type="PackedScene" uid="uid://1vptvu36itc7" path="res://game/entities/enemy/enemy.tscn" id="4_x7kt4"]
 
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("goal", "spawn_pos")]
 y_sort_enabled = true
@@ -37,3 +38,6 @@ tile_set = ExtResource("2_imjak")
 
 [node name="SpawnPosition" type="Marker2D" parent="."]
 position = Vector2(229, 449)
+
+[node name="Enemy" parent="." instance=ExtResource("4_x7kt4")]
+position = Vector2(196, 236)
