@@ -12,7 +12,6 @@ Player:
 Add UI
 
 Enemy:
-	Create enemy scene
 	Make the enemy move towards the player
 	Make the enemy attack the player
 

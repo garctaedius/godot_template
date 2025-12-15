@@ -19,6 +19,8 @@ func connect_to_main(main: Main):
 	game_finished.connect(main.load_main_menu)
 
 func _ready():
+	Global.player = player
+	
 	load_current()
 
 func load_current():

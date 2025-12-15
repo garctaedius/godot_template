@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://1vptvu36itc7"]
+[gd_scene load_steps=30 format=3 uid="uid://1vptvu36itc7"]
 
 [ext_resource type="Texture2D" uid="uid://bkukjn7s58r3k" path="res://game/entities/enemy/assets/log.png" id="1_2gbo7"]
 [ext_resource type="Script" uid="uid://cffouphkycepa" path="res://game/entities/enemy/enemy.gd" id="1_dgysd"]
+[ext_resource type="Script" uid="uid://cnn2xiul1kuww" path="res://game/entities/enemy/FSM/state_machine.gd" id="3_3hb6s"]
+[ext_resource type="Script" uid="uid://cnj7qthl88foa" path="res://game/entities/enemy/FSM/sleeping_state.gd" id="4_mxnxk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgysd"]
 atlas = ExtResource("1_2gbo7")
@@ -192,7 +194,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_73unv")
 }],
-"loop": true,
+"loop": false,
 "name": &"waking",
 "speed": 3.0
 }]
@@ -217,3 +219,15 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_dgysd")
+
+[node name="PlayerRay" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+hit_from_inside = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy", "initial_state")]
+script = ExtResource("3_3hb6s")
+enemy = NodePath("..")
+initial_state = NodePath("Sleeping")
+
+[node name="Sleeping" type="Node" parent="StateMachine"]
+script = ExtResource("4_mxnxk")
