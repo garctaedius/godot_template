@@ -1,18 +1,14 @@
-class_name EnemyTree extends Node2D
+class_name EnemyTree extends CharacterBody2D
 
 var player: Player = Global.player
+@onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var player_ray: RayCast2D = %PlayerRay
+@onready var base_pos: Vector2 = global_position
 
-@export var detection_distance = 100
-
-func _ready():
-	%AnimatedSprite2D.play("sleeping")
+@export var wake_up_distance = 100
+@export var follow_distance = 125
+@export var attack_range = 50
+@export var move_speed = 50
 	
 func _physics_process(_delta):
-	var player_vector: Vector2 = player.position - position
-	%PlayerRay.target_position = player_vector
-	if player_vector.length() < detection_distance and !%PlayerRay.is_colliding():
-		%AnimatedSprite2D.play("waking")
-		
-	
-func _move_to_attack():
-	pass
+	move_and_slide()

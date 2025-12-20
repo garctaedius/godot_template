@@ -1,9 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://1vptvu36itc7"]
+[gd_scene load_steps=32 format=3 uid="uid://1vptvu36itc7"]
 
 [ext_resource type="Texture2D" uid="uid://bkukjn7s58r3k" path="res://game/entities/enemy/assets/log.png" id="1_2gbo7"]
 [ext_resource type="Script" uid="uid://cffouphkycepa" path="res://game/entities/enemy/enemy.gd" id="1_dgysd"]
 [ext_resource type="Script" uid="uid://cnn2xiul1kuww" path="res://game/entities/enemy/FSM/state_machine.gd" id="3_3hb6s"]
 [ext_resource type="Script" uid="uid://cnj7qthl88foa" path="res://game/entities/enemy/FSM/sleeping_state.gd" id="4_mxnxk"]
+[ext_resource type="Script" uid="uid://c6iw6rty7o1bi" path="res://game/entities/enemy/FSM/hunting_state.gd" id="5_aymlg"]
+[ext_resource type="Script" uid="uid://blo516lu6v6m6" path="res://game/entities/enemy/FSM/attacking_state.gd" id="6_hbu1e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgysd"]
 atlas = ExtResource("1_2gbo7")
@@ -203,31 +205,37 @@ animations = [{
 radius = 5.0
 height = 10.0
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_dgysd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_4sqhg")
 animation = &"waking"
-frame_progress = 0.39825833
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 8)
-shape = SubResource("CapsuleShape2D_dgysd")
 
 [node name="PlayerRay" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 hit_from_inside = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy", "initial_state")]
+unique_name_in_owner = true
 script = ExtResource("3_3hb6s")
 enemy = NodePath("..")
 initial_state = NodePath("Sleeping")
 
 [node name="Sleeping" type="Node" parent="StateMachine"]
 script = ExtResource("4_mxnxk")
+
+[node name="Hunting" type="Node" parent="StateMachine"]
+script = ExtResource("5_aymlg")
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("6_hbu1e")
+
+[node name="BackToBase" type="Node" parent="StateMachine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_dgysd")

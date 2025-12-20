@@ -3,14 +3,14 @@ class_name State extends Node
 @warning_ignore("unused_signal")
 signal transitioned(old_state: State, new_state_name: String)
 
-func Enter():
+func enter():
 	pass
 	
-func Exit():
+func exit():
 	pass
 
-func Update(_delta):
+func update(_delta):
 	pass
 	
-func PhysicsUpdate(_delta):
+func physics_update(_delta):
 	pass
