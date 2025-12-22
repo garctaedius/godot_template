@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://1vptvu36itc7"]
+[gd_scene load_steps=38 format=3 uid="uid://1vptvu36itc7"]
 
 [ext_resource type="Texture2D" uid="uid://bkukjn7s58r3k" path="res://game/entities/enemy/assets/log.png" id="1_2gbo7"]
 [ext_resource type="Script" uid="uid://cffouphkycepa" path="res://game/entities/enemy/enemy.gd" id="1_dgysd"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://cnj7qthl88foa" path="res://game/entities/enemy/FSM/sleeping_state.gd" id="4_mxnxk"]
 [ext_resource type="Script" uid="uid://c6iw6rty7o1bi" path="res://game/entities/enemy/FSM/hunting_state.gd" id="5_aymlg"]
 [ext_resource type="Script" uid="uid://blo516lu6v6m6" path="res://game/entities/enemy/FSM/attacking_state.gd" id="6_hbu1e"]
+[ext_resource type="Script" uid="uid://bdomsrjjevio4" path="res://game/entities/enemy/FSM/back_to_base_state.gd" id="7_dgo0o"]
+[ext_resource type="Script" uid="uid://d0n5xv5e3jqia" path="res://game/entities/enemy/FSM/falling_asleep_state.gd" id="8_w7g26"]
+[ext_resource type="Script" uid="uid://cbdikkckfvjir" path="res://game/entities/enemy/FSM/waking_state.gd" id="9_fj3kv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgysd"]
 atlas = ExtResource("1_2gbo7")
@@ -22,6 +25,18 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_aymlg"]
 atlas = ExtResource("1_2gbo7")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sqhg"]
+atlas = ExtResource("1_2gbo7")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y2pb"]
+atlas = ExtResource("1_2gbo7")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkrkc"]
+atlas = ExtResource("1_2gbo7")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbu1e"]
 atlas = ExtResource("1_2gbo7")
@@ -120,6 +135,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4sqhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y2pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkrkc")
+}],
+"loop": false,
+"name": &"falling_asleep",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hbu1e")
 }, {
 "duration": 1.0,
@@ -213,7 +242,7 @@ script = ExtResource("1_dgysd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_4sqhg")
-animation = &"waking"
+animation = &"falling_asleep"
 
 [node name="PlayerRay" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -235,6 +264,13 @@ script = ExtResource("5_aymlg")
 script = ExtResource("6_hbu1e")
 
 [node name="BackToBase" type="Node" parent="StateMachine"]
+script = ExtResource("7_dgo0o")
+
+[node name="FallingAsleep" type="Node" parent="StateMachine"]
+script = ExtResource("8_w7g26")
+
+[node name="Waking" type="Node" parent="StateMachine"]
+script = ExtResource("9_fj3kv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

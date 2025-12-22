@@ -33,7 +33,7 @@ func _on_state_transission(old_state: EnemyTreeState, new_state_name: String):
 	if old_state != current_state:
 		return
 		
-	var new_state: EnemyTreeState = states[new_state_name]
+	var new_state: EnemyTreeState = states[new_state_name.to_lower()]
 	
 	old_state.exit()
 	

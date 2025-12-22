@@ -1,27 +1,17 @@
 extends EnemyTreeState
-
-func exit():
-	enemy.velocity = Vector2.ZERO
 		
 func physics_update(_delta):
-	# TODO: add counter for how long it hasn't seen player. If it hasn't seen
-	# player in a set amount of time, to go idle no matter how far away the player is
-	#var player_vector: Vector2 = Global.player.position - enemy.position
-	#enemy.player_ray.target_position = player_vector
-	#if player_vector.length() < enemy.detection_distance and !%PlayerRay.is_colliding():
-		#transitioned.emit(self, "hunting")
-		
 	var player_vector: Vector2 = player.position - enemy.position
-	if player_vector.length() < enemy.attack_range:
-		transitioned.emit(self, "attacking")
-		return
-		
 	if player_vector.length() < enemy.follow_distance:
-		enemy.velocity = player_vector.normalized() * enemy.move_speed
-	else:
-		transitioned.emit(self, "backtobase")
+		transitioned.emit(self, "hunting")
 		return
 		
+	var base_vector: Vector2 = enemy.base_pos - enemy.position
+	if base_vector.length() < 1:  # random tolerance level
+		transitioned.emit(self, "fallingasleep")
+		return
+	enemy.velocity = base_vector.normalized() * enemy.move_speed
+	
 func update(_delta):
 	update_animation()
 
