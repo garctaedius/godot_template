@@ -17,10 +17,15 @@ func physics_update(_delta):
 		return
 		
 	if player_vector.length() < enemy.follow_distance:
-		enemy.velocity = player_vector.normalized() * enemy.move_speed
+		enemy.velocity = get_dir_from_agent() * enemy.move_speed
 	else:
 		transitioned.emit(self, "backtobase")
 		return
+	
+func get_dir_from_agent() -> Vector2:
+	enemy.nav_agent.target_position = player.position
+	return enemy.position.direction_to(enemy.nav_agent.get_next_path_position())
+	
 		
 func update(_delta):
 	update_animation()

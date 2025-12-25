@@ -4,6 +4,7 @@ var player: Player = Global.player
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var player_ray: RayCast2D = %PlayerRay
 @onready var base_pos: Vector2 = global_position
+@onready var nav_agent: NavigationAgent2D = %NavigationAgent2D
 
 @export var wake_up_distance = 75
 @export var follow_distance = 125
