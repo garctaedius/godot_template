@@ -7,6 +7,9 @@ var game_scene: Game
 @export var goal: Goal
 @export var spawn_pos: Marker2D
 
+@onready var navigation_region: NavigationRegion2D = %NavigationRegion2D
+@onready var level_outline: Polygon2D = %LevelOutline
+
 
 func connect_to_game(game: Game):
 	game_scene = game
@@ -14,6 +17,14 @@ func connect_to_game(game: Game):
 	
 func _ready():
 	goal.connect("reached", level_over)
+	
+	create_navigation_mesh()
+	
+func create_navigation_mesh():
+	var navigation_mesh = navigation_region.navigation_polygon
+	# Create an outline of the level before baking
+	navigation_mesh.add_outline(level_outline.polygon)
+	navigation_region.bake_navigation_polygon()
 	
 func level_over():
 	finished.emit()
