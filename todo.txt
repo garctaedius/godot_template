@@ -12,7 +12,6 @@ Player:
 Add UI
 
 Enemy:
-	Make the enemy move towards the player
 	Make the enemy attack the player
 
 add cut scenes
@@ -22,3 +21,6 @@ add game over
 add save load
 
 add pause screen
+
+EXTRAS:
+	navigation: Automatically create navigation polygon from collision?
