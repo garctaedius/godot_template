@@ -313,7 +313,7 @@ height = 10.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_dgysd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -321,7 +321,7 @@ unique_name_in_owner = true
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_4sqhg")
 animation = &"attacking_down"
-frame_progress = 0.17483187
+frame_progress = 0.055247568
 
 [node name="PlayerRay" type="RayCast2D" parent="."]
 unique_name_in_owner = true

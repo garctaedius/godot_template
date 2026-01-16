@@ -2,8 +2,12 @@ class_name Game extends TopLevelNode
 
 signal game_finished
 
+@export_category("Settings")
+@export var starting_level_index: int = 0
+
 @onready var level_holder: Node = %LevelHolder
 
+@export_category("Required")
 @export var player: Player
 
 var level_sequence = [
@@ -21,6 +25,7 @@ func connect_to_main(main: Main):
 func _ready():
 	Global.player = player
 	
+	current_level_index = starting_level_index
 	load_current()
 
 func load_current():

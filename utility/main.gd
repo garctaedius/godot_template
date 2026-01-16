@@ -2,10 +2,15 @@ class_name Main extends Node
 
 @onready var scene_holder: Node = %SceneHolder
 
+@export var start_in_game: bool = false
+
 var current_scene: TopLevelNode = null
 
 func _ready():
-	call_deferred("load_main_menu")
+	if start_in_game:
+		call_deferred("load_game")
+	else:
+		call_deferred("load_main_menu")
 	
 
 # TODO: connect buttons to start game
