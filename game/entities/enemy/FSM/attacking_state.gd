@@ -1,5 +1,7 @@
 extends EnemyTreeState
 
+var bubble_scene_name: String = "res://game/entities/enemy/projectile/bubble.tscn"
+
 var direction: String
 
 func enter():
@@ -7,9 +9,10 @@ func enter():
 	enemy.animated_sprite.pause()
 	enemy.velocity = Vector2.ZERO
 		
+var player_vector: Vector2
 func physics_update(_delta):		
 	# Check distance to player
-	var player_vector: Vector2 = player.position - enemy.position
+	player_vector = player.position - enemy.position
 	enemy.player_ray.target_position = player_vector
 	if player_vector.length() > enemy.attack_range:
 		transitioned.emit(self, "hunting")
@@ -36,3 +39,12 @@ func update_animation():
 		
 		enemy.animated_sprite.play("attacking_" + direction)
 		
+
+
+func _on_animated_sprite_2d_frame_changed():
+	if "attacking" in enemy.animated_sprite.animation and enemy.animated_sprite.frame == 1:
+		shoot_bubbble()
+
+func shoot_bubbble():
+	var bubble_scene = load(bubble_scene_name)
+	Global.spawn_projectile(bubble_scene, enemy.position,  player_vector, 3)

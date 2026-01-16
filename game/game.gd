@@ -33,6 +33,7 @@ func load_current():
 		current_level_scene.queue_free()
 		
 	current_level_scene = load(level_sequence[current_level_index]).instantiate()
+	Global.current_level = current_level_scene
 	
 	# Place player character
 	player.teleport(current_level_scene.spawn_pos.position)

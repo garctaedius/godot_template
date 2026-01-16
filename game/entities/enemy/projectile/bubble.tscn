@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://hefnuqu8tfhr"]
+
+[ext_resource type="Texture2D" uid="uid://404mf8g73h16" path="res://game/entities/enemy/projectile/bubble.png" id="1_en15m"]
+[ext_resource type="Script" uid="uid://d1hu1b05k17i4" path="res://game/entities/enemy/projectile/bubble.gd" id="1_o6efc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o6efc"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykrw3"]
+atlas = ExtResource("1_en15m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q1vs"]
+atlas = ExtResource("1_en15m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srwdv"]
+atlas = ExtResource("1_en15m")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5hi5"]
+atlas = ExtResource("1_en15m")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ag8db"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykrw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q1vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srwdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5hi5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bubble" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 19
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_o6efc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o6efc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ag8db")
+frame_progress = 0.9828855
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
