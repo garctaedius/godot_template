@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpkr0tnydle3e"]
+
+[ext_resource type="Script" uid="uid://dsmudovmg30w4" path="res://ui/game_ui/hud/health/heart/heart.gd" id="1_0lfmh"]
+
+[node name="Heart" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0lfmh")

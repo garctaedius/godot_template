@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwwes4elsakxt"]
+
+[ext_resource type="Script" uid="uid://denj28jlw0vxo" path="res://ui/game_ui/hud/health/heart_container/heart_container.gd" id="1_onedq"]
+[ext_resource type="PackedScene" uid="uid://dpkr0tnydle3e" path="res://ui/game_ui/hud/health/heart/heart.tscn" id="2_ce7f0"]
+
+[node name="HeartContainer" type="HBoxContainer"]
+offset_right = 36.0
+offset_bottom = 16.0
+script = ExtResource("1_onedq")
+heart_scene = ExtResource("2_ce7f0")

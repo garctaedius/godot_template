@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://du4o0k0g3u7wn"]
+
+[ext_resource type="PackedScene" uid="uid://bwwes4elsakxt" path="res://ui/game_ui/hud/health/heart_container/heart_container.tscn" id="1_cj46y"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeartContainer" parent="." instance=ExtResource("1_cj46y")]
+layout_mode = 0
+anchors_preset = 0

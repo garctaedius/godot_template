@@ -7,12 +7,13 @@ add options:
 	difficulty?
 	
 Player:
-	Add health
-
-Add UI
+	Add take damage animation
 
 Enemy:
-	Make the enemy attack the player
+	Fix bubble: maybe have the enemy spawn it, and change it from rigid body?
+
+Camera:
+	add a camera that follows the player
 
 add cut scenes
 
@@ -21,6 +22,3 @@ add game over
 add save load
 
 add pause screen
-
-EXTRAS:
-	navigation: Automatically create navigation polygon from collision?
