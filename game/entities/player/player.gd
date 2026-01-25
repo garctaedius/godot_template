@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var speed = 100.0
+@export var speed: float = 100.0
 @export var hitboxes: PlayerHitboxes
 @export var max_health: int = 12
 
@@ -29,7 +29,7 @@ func take_damage(amount: int):
 	current_health -= amount
 	#TODO: play animation here
 	if current_health <= 0:
-		Global.game_over()
+		Global.game_over(GameState.LastGameStates.LOSS)
 	
 func _physics_process(_delta):
 	if not attacking:

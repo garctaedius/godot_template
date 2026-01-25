@@ -7,15 +7,17 @@ class_name Main extends Node
 var current_scene: TopLevelNode = null
 
 func _ready():
+	GameState.LastGameState = GameState.LastGameStates.NONE
+	
 	if start_in_game:
 		call_deferred("load_game")
 	else:
 		call_deferred("load_main_menu")
 	
 
-# TODO: connect buttons to start game
 func load_main_menu():
 	load_scene("res://ui/menus/main_menu/main_menu.tscn")
+	
 	
 func load_game():
 	load_scene("res://game/game.tscn")

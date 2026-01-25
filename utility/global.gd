@@ -4,8 +4,10 @@ var player: Player
 
 var current_level: Level
 
-func game_over():
-	print("game over")
+var _game: Game
+
+func game_over(new_game_state: GameState.LastGameStates):
+	_game.game_over(new_game_state)
 
 func spawn_projectile(scene: PackedScene, position: Vector2,
 					  direction: Vector2, speed: float):

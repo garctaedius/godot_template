@@ -18,11 +18,18 @@ var level_sequence = [
 var current_level_index: int = 0
 var current_level_scene: Level = null
 
+func game_over(new_game_state: GameState.LastGameStates):
+	game_finished.emit()
+	
+	GameState.LastGameState = new_game_state
+	
+	main_scene.load_main_menu()
+
 func connect_to_main(main: Main):
 	super(main)
-	game_finished.connect(main.load_main_menu)
 
 func _ready():
+	Global._game = self
 	Global.player = player
 	
 	current_level_index = starting_level_index
@@ -51,12 +58,10 @@ func _connect_level_to_game():
 	current_level_scene.connect_to_game(self)
 	
 func _on_level_finished():
-	print("level finished")
 	current_level_index += 1
 	
 	if current_level_index >= len(level_sequence):
-		game_finished.emit()
+		game_over(GameState.LastGameStates.WIN)
 		return
 		
 	load_current()
-	
