@@ -17,8 +17,6 @@ Camera:
 
 add cut scenes
 
-add game over
-
 add save load
 
 add pause screen

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://de57kxogybdo3"]
+[gd_resource type="TileSet" format=3 uid="uid://de57kxogybdo3"]
 
 [ext_resource type="Texture2D" uid="uid://ds6wsgkgofpck" path="res://game/levels/assets/tilesets/Overworld.png" id="1_xyyol"]
 [ext_resource type="Texture2D" uid="uid://bf31cfio2nsdk" path="res://game/levels/assets/tilesets/Inner.png" id="2_mk8ht"]
