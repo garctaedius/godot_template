@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://qfl67m68fj5n"]
+[gd_scene format=3 uid="uid://qfl67m68fj5n"]
 
 [ext_resource type="Texture2D" uid="uid://bdtuqx6u1om4r" path="res://game/entities/player/assets/character.png" id="1_1a4jd"]
 [ext_resource type="Script" uid="uid://gopbw3v44p0r" path="res://game/entities/player/player.gd" id="1_gqtae"]
@@ -309,39 +309,40 @@ animations = [{
 radius = 4.0
 height = 14.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hitboxes")]
+[node name="Player" type="CharacterBody2D" unique_id=1684312015 node_paths=PackedStringArray("hitboxes")]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_gqtae")
 hitboxes = NodePath("HitBoxes")
+max_health = 40
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1504673996]
 shape = SubResource("CapsuleShape2D_gqtae")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1519938291]
 unique_name_in_owner = true
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_cjfdk")
 animation = &"attack_down"
 
-[node name="HitBoxes" parent="." instance=ExtResource("3_x4rrl")]
+[node name="HitBoxes" parent="." unique_id=1195167050 instance=ExtResource("3_x4rrl")]
 visible = false
 position = Vector2(0, -7)
 
-[node name="Movement" type="Node" parent="."]
+[node name="Movement" type="Node" parent="." unique_id=435222705]
 unique_name_in_owner = true
 script = ExtResource("4_cjfdk")
 
-[node name="Attack" type="Node" parent="."]
+[node name="Attack" type="Node" parent="." unique_id=1350706842]
 unique_name_in_owner = true
 script = ExtResource("5_oic1i")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=569795910]
 visible = false
 collision_layer = 32
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=452823778]
 position = Vector2(-1, -6)
 shape = SubResource("CapsuleShape2D_oic1i")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://1vptvu36itc7"]
+[gd_scene format=3 uid="uid://1vptvu36itc7"]
 
 [ext_resource type="Script" uid="uid://cffouphkycepa" path="res://game/entities/enemy/enemy.gd" id="1_dgysd"]
 [ext_resource type="Texture2D" uid="uid://c8tul0mhmrpyu" path="res://game/entities/enemy/assets/log_with_attack.png" id="2_8xdwx"]
@@ -155,7 +155,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y6tir")
 }],
-"loop": true,
+"loop": false,
 "name": &"attacking_down",
 "speed": 1.2
 }, {
@@ -166,7 +166,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kolw6")
 }],
-"loop": true,
+"loop": false,
 "name": &"attacking_left",
 "speed": 1.2
 }, {
@@ -177,7 +177,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ydmln")
 }],
-"loop": true,
+"loop": false,
 "name": &"attacking_right",
 "speed": 1.2
 }, {
@@ -188,7 +188,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_08wq7")
 }],
-"loop": true,
+"loop": false,
 "name": &"attacking_up",
 "speed": 1.2
 }, {
@@ -310,54 +310,56 @@ animations = [{
 radius = 5.0
 height = 10.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=1755322121]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_dgysd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2126853921]
 unique_name_in_owner = true
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_4sqhg")
-animation = &"attacking_down"
+animation = &"attacking_up"
 
-[node name="PlayerRay" type="RayCast2D" parent="."]
+[node name="PlayerRay" type="RayCast2D" parent="." unique_id=170126020]
 unique_name_in_owner = true
 hit_from_inside = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy", "initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1792741494 node_paths=PackedStringArray("enemy", "initial_state")]
 unique_name_in_owner = true
 script = ExtResource("3_3hb6s")
 enemy = NodePath("..")
 initial_state = NodePath("Sleeping")
 
-[node name="Sleeping" type="Node" parent="StateMachine"]
+[node name="Sleeping" type="Node" parent="StateMachine" unique_id=518811766]
 script = ExtResource("4_mxnxk")
 
-[node name="Hunting" type="Node" parent="StateMachine"]
+[node name="Hunting" type="Node" parent="StateMachine" unique_id=1511312947]
 script = ExtResource("5_aymlg")
 
-[node name="Attacking" type="Node" parent="StateMachine"]
+[node name="Attacking" type="Node" parent="StateMachine" unique_id=664560825]
 script = ExtResource("6_hbu1e")
 
-[node name="BackToBase" type="Node" parent="StateMachine"]
+[node name="AttackCooldown" type="Timer" parent="StateMachine/Attacking" unique_id=1632850987]
+
+[node name="BackToBase" type="Node" parent="StateMachine" unique_id=274996832]
 script = ExtResource("7_dgo0o")
 
-[node name="FallingAsleep" type="Node" parent="StateMachine"]
+[node name="FallingAsleep" type="Node" parent="StateMachine" unique_id=1486680801]
 script = ExtResource("8_w7g26")
 
-[node name="Waking" type="Node" parent="StateMachine"]
+[node name="Waking" type="Node" parent="StateMachine" unique_id=749714771]
 script = ExtResource("9_fj3kv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342907986]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_dgysd")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=892437334]
 unique_name_in_owner = true
 path_desired_distance = 4.0
 target_desired_distance = 1.0
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Attacking" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="StateMachine/Attacking/AttackCooldown" to="StateMachine/Attacking" method="_on_attack_cooldown_timeout"]

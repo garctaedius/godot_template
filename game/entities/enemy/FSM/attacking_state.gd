@@ -2,12 +2,19 @@ extends EnemyTreeState
 
 var bubble_scene_name: String = "res://game/entities/enemy/projectile/bubble.tscn"
 
+@onready var attack_cooldown_timer: Timer = $AttackCooldown
+
+@export var reset_animation_cooldown: float = 0.4
+
 var direction: String
 
 func enter():
 	direction = "null"
 	enemy.animated_sprite.pause()
 	enemy.velocity = Vector2.ZERO
+	
+	attack_cooldown_timer.wait_time = enemy.attack_cooldown
+	attack_cooldown_timer.start()
 		
 var player_vector: Vector2
 func physics_update(_delta):		
@@ -37,14 +44,28 @@ func update_animation():
 	if not direction or new_direction != direction:
 		direction = new_direction
 		
-		enemy.animated_sprite.play("attacking_" + direction)
-		
+		if "attacking" not in enemy.animated_sprite.animation:
+			enemy.animated_sprite.frame = 0
+			enemy.animated_sprite.frame_progress = 0
+			
+		enemy.animated_sprite.animation = "attacking_" + direction
+			
 
-
-func _on_animated_sprite_2d_frame_changed():
-	if "attacking" in enemy.animated_sprite.animation and enemy.animated_sprite.frame == 1:
-		shoot_bubbble()
-
-func shoot_bubbble():
+func shoot_bubble():
 	var bubble_scene = load(bubble_scene_name)
 	Global.spawn_projectile(bubble_scene, enemy.position,  player_vector, 3)
+
+func _on_attack_cooldown_timeout():
+	if state_machine.current_state != self:
+		return
+		
+	shoot_bubble()
+	attack_cooldown_timer.start()
+	enemy.animated_sprite.frame = 1
+	
+	var reset_animation_timer: Timer = Timer.new()
+	add_child(reset_animation_timer)
+	reset_animation_timer.start(reset_animation_cooldown)
+	await reset_animation_timer.timeout
+	enemy.animated_sprite.frame = 0
+	

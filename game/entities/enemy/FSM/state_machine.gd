@@ -13,6 +13,7 @@ func _ready():
 		if child is EnemyTreeState:
 			states[child.name.to_lower()] = child
 			child.enemy = enemy
+			child.state_machine = self
 			child.transitioned.connect(_on_state_transission)
 			
 	
