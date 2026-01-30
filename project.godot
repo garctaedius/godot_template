@@ -23,6 +23,7 @@ config/icon="res://general_assets/icon.svg"
 
 Global="*res://utility/global.gd"
 GameState="*res://utility/game_state.gd"
+SignalBus="*uid://bcehmvjixr8hw"
 
 [display]
 

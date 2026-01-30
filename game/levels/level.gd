@@ -9,6 +9,7 @@ var game_scene: Game
 
 @onready var navigation_region: NavigationRegion2D = %NavigationRegion2D
 @onready var level_outline: Polygon2D = %LevelOutline
+@onready var projectile_holder: Node = $ProjectileHolder
 
 
 func connect_to_game(game: Game):
@@ -20,6 +21,8 @@ func _ready():
 	
 	create_navigation_mesh()
 	
+	SignalBus.spawn_projectile.connect(_on_projectile_spawned)
+	
 func create_navigation_mesh():
 	var navigation_mesh = navigation_region.navigation_polygon
 	# Create an outline of the level before baking
@@ -28,3 +31,7 @@ func create_navigation_mesh():
 	
 func level_over():
 	finished.emit()
+	
+func _on_projectile_spawned(projectile: Node, position: Vector2):
+	projectile.position = position
+	projectile_holder.add_child(projectile)

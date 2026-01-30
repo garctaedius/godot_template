@@ -49,3 +49,8 @@ func _on_hurt_box_body_entered(body):
 	if body is Bubble:
 		take_damage(body.damage)
 		body.queue_free()
+
+
+func _on_hurt_box_area_entered(area):
+	if area is Bubble:
+		take_damage(area.damage)

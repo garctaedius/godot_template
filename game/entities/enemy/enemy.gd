@@ -8,8 +8,11 @@ var player: Player = Global.player
 
 @export var wake_up_distance: float = 75
 @export var follow_distance: float = 125
-@export var attack_range: float = 50
 @export var move_speed: float = 50
+
+@export var attack_range: float = 50
+@export var damage: int = 3
+@export var projectile_speed: float = 3
 @export var attack_cooldown: float = 2.0
 	
 func _physics_process(_delta):

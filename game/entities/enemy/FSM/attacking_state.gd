@@ -49,11 +49,14 @@ func update_animation():
 			enemy.animated_sprite.frame_progress = 0
 			
 		enemy.animated_sprite.animation = "attacking_" + direction
-			
 
 func shoot_bubble():
-	var bubble_scene = load(bubble_scene_name)
-	Global.spawn_projectile(bubble_scene, enemy.position,  player_vector, 3)
+	var bubble_scene: Bubble = load(bubble_scene_name).instantiate()
+	bubble_scene.damage = enemy.damage
+	bubble_scene.speed = enemy.projectile_speed
+	bubble_scene.direction = player_vector
+	
+	SignalBus.spawn_projectile.emit(bubble_scene, enemy.global_position)
 
 func _on_attack_cooldown_timeout():
 	if state_machine.current_state != self:
