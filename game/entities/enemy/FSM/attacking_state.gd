@@ -17,7 +17,8 @@ func enter():
 	attack_cooldown_timer.start()
 		
 var player_vector: Vector2
-func physics_update(_delta):		
+func physics_update(_delta):
+	enemy.velocity = Vector2.ZERO
 	# Check distance to player
 	player_vector = player.position - enemy.position
 	enemy.player_ray.target_position = player_vector

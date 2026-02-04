@@ -52,12 +52,12 @@ tile_set = ExtResource("3_2ngae")
 [node name="SpawnPosition" type="Marker2D" parent="." unique_id=1703102988]
 position = Vector2(446, 338)
 
-[node name="Enemies" type="Node" parent="." unique_id=1106849588]
+[node name="EnemyHolder" type="Node" parent="." unique_id=1106849588]
 
-[node name="Enemy" parent="Enemies" unique_id=1373499234 instance=ExtResource("4_g5i8j")]
+[node name="Enemy" parent="EnemyHolder" unique_id=1373499234 instance=ExtResource("4_g5i8j")]
 position = Vector2(123, 248)
 
-[node name="Enemy2" parent="Enemies" unique_id=782060683 instance=ExtResource("4_g5i8j")]
+[node name="Enemy2" parent="EnemyHolder" unique_id=782060683 instance=ExtResource("4_g5i8j")]
 position = Vector2(212, 186)
 
 [node name="ProjectileHolder" type="Node" parent="." unique_id=2126219503]
