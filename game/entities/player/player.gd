@@ -8,7 +8,7 @@ class_name Player extends CharacterBody2D
 @export_group("Resources")
 @export var damage_shader: Material
 
-var direction: String
+var direction: String = "up"
 var is_stunned: bool = false
 var is_attacking: bool = false
 

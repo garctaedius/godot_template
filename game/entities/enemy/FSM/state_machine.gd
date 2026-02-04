@@ -29,15 +29,22 @@ func _physics_process(delta):
 	if not enemy or not player:
 		return
 	current_state.physics_update(delta)
-
-func _on_state_transission(old_state: EnemyTreeState, new_state_name: String):
-	if old_state != current_state:
-		return
-		
+	
+func change_state(new_state_name: String, old_state: EnemyTreeState = null):
 	var new_state: EnemyTreeState = states[new_state_name.to_lower()]
 	
+	if not old_state:
+		old_state = current_state
+		
 	old_state.exit()
 	
 	new_state.enter()
 	
 	current_state = new_state
+
+
+func _on_state_transission(old_state: EnemyTreeState, new_state_name: String):
+	if old_state != current_state:
+		return
+		
+	change_state(new_state_name, old_state)

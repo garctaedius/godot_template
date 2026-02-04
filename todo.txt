@@ -8,8 +8,7 @@ add options:
 	
 Enemy:
 	take damage
-	
-Player: Improve the attacking and is_stunned bools
+	fix bug where enemy sticks to the player when the player gets too close
 
 Camera:
 	add a camera that follows the player

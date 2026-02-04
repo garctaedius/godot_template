@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bdomsrjjevio4" path="res://game/entities/enemy/FSM/back_to_base_state.gd" id="7_dgo0o"]
 [ext_resource type="Script" uid="uid://d0n5xv5e3jqia" path="res://game/entities/enemy/FSM/falling_asleep_state.gd" id="8_w7g26"]
 [ext_resource type="Script" uid="uid://cbdikkckfvjir" path="res://game/entities/enemy/FSM/waking_state.gd" id="9_fj3kv"]
+[ext_resource type="Script" uid="uid://bx5m3bdnc0vr4" path="res://game/entities/enemy/FSM/dying.gd" id="10_8xdwx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dfpe"]
 atlas = ExtResource("2_8xdwx")
@@ -310,6 +311,10 @@ animations = [{
 radius = 5.0
 height = 10.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fj3kv"]
+radius = 7.0
+height = 22.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1755322121]
 collision_layer = 4
 collision_mask = 7
@@ -352,6 +357,9 @@ script = ExtResource("8_w7g26")
 [node name="Waking" type="Node" parent="StateMachine" unique_id=749714771]
 script = ExtResource("9_fj3kv")
 
+[node name="Dying" type="Node" parent="StateMachine" unique_id=450535017]
+script = ExtResource("10_8xdwx")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342907986]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_dgysd")
@@ -363,4 +371,12 @@ target_desired_distance = 1.0
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
+[node name="HurtBox" type="Area2D" parent="." unique_id=1607294739]
+collision_layer = 16
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2002604088]
+shape = SubResource("CapsuleShape2D_fj3kv")
+
 [connection signal="timeout" from="StateMachine/Attacking/AttackCooldown" to="StateMachine/Attacking" method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -15,12 +15,9 @@ extends Node
 var player: Player
 var animated_sprite: AnimatedSprite2D
 
-var invincibility_timer: Timer
-var stun_timer: Timer
-var can_take_damage: bool = true
-func _ready(): 
-	invincibility_timer = $InvincibilityTimer
-	stun_timer = $StunTimer
+@onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var stun_timer: Timer = $StunTimer
+var _can_take_damage: bool = true
 
 func connect_to_player(_player: Player, _animated_sprite: AnimatedSprite2D):
 	player = _player
@@ -34,7 +31,7 @@ func _process(delta):
 		_elapsed_time += delta
 	
 func take_damage(amount: int):
-	if not can_take_damage:
+	if not _can_take_damage:
 		return
 	
 	# Reduce player health
@@ -57,7 +54,7 @@ func take_damage(amount: int):
 	animated_sprite.material.set_shader_parameter("move_horizontal", move_horizontal)
 	
 	# Handle player stun
-	can_take_damage = false
+	_can_take_damage = false
 	player.is_stunned = true
 	stun_timer.start(stun_duration)
 	
@@ -78,4 +75,4 @@ func _on_stun_timer_timeout():
 func _on_invincibility_timer_timeout():
 	# Reset shader material once invincibility wears off
 	animated_sprite.material = Material.new()
-	can_take_damage = true
+	_can_take_damage = true

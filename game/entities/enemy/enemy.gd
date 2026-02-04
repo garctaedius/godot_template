@@ -6,6 +6,8 @@ var player: Player = Global.player
 @onready var base_pos: Vector2 = global_position
 @onready var nav_agent: NavigationAgent2D = %NavigationAgent2D
 
+@onready var state_machine: EnemyTreeStateMachine = %StateMachine
+
 @export var wake_up_distance: float = 75
 @export var follow_distance: float = 125
 @export var move_speed: float = 50
@@ -17,3 +19,9 @@ var player: Player = Global.player
 	
 func _physics_process(_delta):
 	move_and_slide()
+
+func take_damage():
+	state_machine.change_state("dying")
+	
+func _on_hurt_box_area_entered(_area):
+	take_damage()
