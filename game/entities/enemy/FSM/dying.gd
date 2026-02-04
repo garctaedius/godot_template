@@ -13,9 +13,7 @@ extends EnemyTreeState
 func enter():
 	enemy.animated_sprite.material = hurt_shader
 	var shader: Material = enemy.animated_sprite.material
-	var dying_time = move_duration + blink_duration
-	print(dying_time)
-	timer.start(dying_time)
+	timer.start(move_duration + blink_duration)
 	
 	# Set shader parameters
 	shader.set_shader_parameter("amplitude", move_amplitude)
@@ -34,5 +32,4 @@ func update(delta):
 
 
 func _on_dying_timer_timeout():
-	print("DONE!")
 	enemy.queue_free()
