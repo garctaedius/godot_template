@@ -10,6 +10,7 @@ class_name Player extends CharacterBody2D
 
 var attacking: bool = false
 var direction: String
+var is_stunned: bool = false
 
 var animated_sprite: AnimatedSprite2D
 
@@ -35,10 +36,9 @@ func teleport(pos: Vector2):
 	global_position = pos
 	
 func _physics_process(_delta):
-	if not attacking:
+	if not attacking and not is_stunned:
 		attacking = %Attack.handle_attack(direction)
-	if not attacking:
-		direction = %Movement.handle_movement()
+	direction = %Movement.handle_movement(not (attacking or is_stunned))
 	move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished():

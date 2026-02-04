@@ -11,11 +11,13 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v0nmi"]
 shader = ExtResource("1_v0nmi")
 shader_parameter/shock_color = Color(1, 0, 0, 1)
+shader_parameter/color_duration = 3.0
 shader_parameter/amplitude = 10.0
-shader_parameter/move_damping = 5.0
+shader_parameter/move_duration = 2.0
 shader_parameter/frequecy = 15.0
-shader_parameter/color_fade = 5.0
-shader_parameter/elapsed = 0.0
+shader_parameter/_elapsed = 0.0
+shader_parameter/move_horizontal = true
+shader_parameter/move_positive = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtae"]
 radius = 4.0
@@ -324,7 +326,6 @@ height = 14.0
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_gqtae")
-speed = null
 hitboxes = NodePath("HitBoxes")
 max_health = 40
 damage_shader = SubResource("ShaderMaterial_v0nmi")
@@ -336,7 +337,9 @@ shape = SubResource("CapsuleShape2D_gqtae")
 unique_name_in_owner = true
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_cjfdk")
-animation = &"attack_down"
+animation = &"attack_up"
+frame = 4
+frame_progress = 1.0
 
 [node name="HitBoxes" parent="." unique_id=1195167050 instance=ExtResource("3_x4rrl")]
 visible = false
@@ -357,6 +360,8 @@ script = ExtResource("7_dhej3")
 [node name="InvincibilityTimer" type="Timer" parent="TakeDamage" unique_id=594177420]
 wait_time = 3.0
 
+[node name="StunTimer" type="Timer" parent="TakeDamage" unique_id=1189740543]
+
 [node name="HurtBox" type="Area2D" parent="." unique_id=569795910]
 visible = false
 collision_layer = 32
@@ -367,5 +372,6 @@ position = Vector2(-1, -6)
 shape = SubResource("CapsuleShape2D_oic1i")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="TakeDamage/StunTimer" to="TakeDamage" method="_on_stun_timer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

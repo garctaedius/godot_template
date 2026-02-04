@@ -54,7 +54,7 @@ func shoot_bubble():
 	var bubble_scene: Bubble = load(bubble_scene_name).instantiate()
 	bubble_scene.damage = enemy.damage
 	bubble_scene.speed = enemy.projectile_speed
-	bubble_scene.direction = player_vector
+	bubble_scene.direction = player_vector.normalized()
 	
 	SignalBus.spawn_projectile.emit(bubble_scene, enemy.global_position)
 

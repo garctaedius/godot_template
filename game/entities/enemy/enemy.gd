@@ -12,7 +12,7 @@ var player: Player = Global.player
 
 @export var attack_range: float = 50
 @export var damage: int = 3
-@export var projectile_speed: float = 3
+@export var projectile_speed: float = 150.0
 @export var attack_cooldown: float = 2.0
 	
 func _physics_process(_delta):
