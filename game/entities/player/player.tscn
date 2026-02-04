@@ -337,9 +337,7 @@ shape = SubResource("CapsuleShape2D_gqtae")
 unique_name_in_owner = true
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_cjfdk")
-animation = &"attack_up"
-frame = 4
-frame_progress = 1.0
+animation = &"right"
 
 [node name="HitBoxes" parent="." unique_id=1195167050 instance=ExtResource("3_x4rrl")]
 visible = false
@@ -371,7 +369,8 @@ collision_mask = 16
 position = Vector2(-1, -6)
 shape = SubResource("CapsuleShape2D_oic1i")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="Attack" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="TakeDamage/InvincibilityTimer" to="TakeDamage" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="TakeDamage/StunTimer" to="TakeDamage" method="_on_stun_timer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

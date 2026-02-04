@@ -8,9 +8,9 @@ class_name Player extends CharacterBody2D
 @export_group("Resources")
 @export var damage_shader: Material
 
-var attacking: bool = false
 var direction: String
 var is_stunned: bool = false
+var is_attacking: bool = false
 
 var animated_sprite: AnimatedSprite2D
 
@@ -36,17 +36,9 @@ func teleport(pos: Vector2):
 	global_position = pos
 	
 func _physics_process(_delta):
-	if not attacking and not is_stunned:
-		attacking = %Attack.handle_attack(direction)
-	direction = %Movement.handle_movement(not (attacking or is_stunned))
+	%Attack.handle_attack()
+	%Movement.handle_movement()
 	move_and_slide()
-
-func _on_animated_sprite_2d_animation_finished():
-	if attacking:
-		attacking = false
-		hitboxes.deactivate()
-		
-		animated_sprite.animation = direction
 
 func _on_hurt_box_area_entered(area):
 	if area is Bubble:

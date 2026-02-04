@@ -36,7 +36,8 @@ func _process(delta):
 func take_damage(amount: int):
 	if not can_take_damage:
 		return
-		
+	
+	# Reduce player health
 	player.current_health -= amount
 	if player.current_health <= 0:
 		Global.game_over(GameState.LastGameStates.LOSS)
@@ -55,16 +56,26 @@ func take_damage(amount: int):
 	var move_horizontal = "right" in player.direction or "left" in player.direction
 	animated_sprite.material.set_shader_parameter("move_horizontal", move_horizontal)
 	
+	# Handle player stun
 	can_take_damage = false
 	player.is_stunned = true
 	stun_timer.start(stun_duration)
 	
+	# Handle invincibility
 	invincibility_timer.start(invincibility_time)
-	await invincibility_timer.timeout
+	
+	# Reset player animation if player is not attacking
+	if not player.is_attacking:
+		animated_sprite.frame = 0
+		animated_sprite.stop()
+	else:
+		print(animated_sprite.animation)
+	
+func _on_stun_timer_timeout():
+	player.is_stunned = false
+
+
+func _on_invincibility_timer_timeout():
 	# Reset shader material once invincibility wears off
 	animated_sprite.material = Material.new()
 	can_take_damage = true
-
-
-func _on_stun_timer_timeout():
-	player.is_stunned = false

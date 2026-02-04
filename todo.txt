@@ -6,8 +6,10 @@ add options:
 	fullscreen?
 	difficulty?
 	
-Player:
-	Add take damage animation
+Enemy:
+	take damage
+	
+Player: Improve the attacking and is_stunned bools
 
 Camera:
 	add a camera that follows the player
