@@ -5,9 +5,6 @@ class_name Player extends CharacterBody2D
 @export var hitboxes: PlayerHitboxes
 @export var max_health: int = 12
 
-@export_group("Resources")
-@export var damage_shader: Material
-
 var direction: String = "up"
 var is_stunned: bool = false
 var is_attacking: bool = false

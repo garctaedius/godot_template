@@ -7,8 +7,8 @@ add options:
 	difficulty?
 	
 Enemy:
-	take damage
-	fix bug where enemy sticks to the player when the player gets too close
+	Make take damage shader move the enemy based on from where it got hit
+	create little cloud where enemy died.
 
 Camera:
 	add a camera that follows the player

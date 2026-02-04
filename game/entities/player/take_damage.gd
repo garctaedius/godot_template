@@ -1,5 +1,7 @@
 extends Node
 
+@export var damage_shader: Material
+
 # How long the player cannot take damage, as well as how long the color
 # is applied to the player. After the duration, 10% of the color is applied.
 @export var invincibility_time: float = 2.5
@@ -25,7 +27,7 @@ func connect_to_player(_player: Player, _animated_sprite: AnimatedSprite2D):
 	
 var _elapsed_time: float = 0
 func _process(delta):
-	if animated_sprite.material == player.damage_shader:
+	if animated_sprite.material == damage_shader:
 		# Keeps track of how long the shader has been active
 		animated_sprite.material.set_shader_parameter("_elapsed", _elapsed_time)
 		_elapsed_time += delta
@@ -41,7 +43,7 @@ func take_damage(amount: int):
 		return
 	
 	# Apply damage shader
-	animated_sprite.material = player.damage_shader
+	animated_sprite.material = damage_shader
 	_elapsed_time = 0
 	animated_sprite.material.set_shader_parameter("amplitude", shift_amplitude)
 	animated_sprite.material.set_shader_parameter("frequecy", shift_frequency)

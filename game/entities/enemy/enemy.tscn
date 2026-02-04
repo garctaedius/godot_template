@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cffouphkycepa" path="res://game/entities/enemy/enemy.gd" id="1_dgysd"]
 [ext_resource type="Texture2D" uid="uid://c8tul0mhmrpyu" path="res://game/entities/enemy/assets/log_with_attack.png" id="2_8xdwx"]
+[ext_resource type="Shader" uid="uid://dkm2vroo3i6eb" path="res://game/entities/enemy/assets/enemy_hurt.gdshader" id="2_ivxim"]
 [ext_resource type="Script" uid="uid://cnn2xiul1kuww" path="res://game/entities/enemy/FSM/state_machine.gd" id="3_3hb6s"]
 [ext_resource type="Script" uid="uid://cnj7qthl88foa" path="res://game/entities/enemy/FSM/sleeping_state.gd" id="4_mxnxk"]
 [ext_resource type="Script" uid="uid://c6iw6rty7o1bi" path="res://game/entities/enemy/FSM/hunting_state.gd" id="5_aymlg"]
@@ -307,6 +308,15 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivxim"]
+shader = ExtResource("2_ivxim")
+shader_parameter/amplitude = 10.0
+shader_parameter/move_duration = 1.0
+shader_parameter/shock_color = Color(1, 1, 1, 1)
+shader_parameter/blink_duration = 2.0
+shader_parameter/num_blinks = 3
+shader_parameter/_elapsed = 0.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgysd"]
 radius = 5.0
 height = 10.0
@@ -359,6 +369,9 @@ script = ExtResource("9_fj3kv")
 
 [node name="Dying" type="Node" parent="StateMachine" unique_id=450535017]
 script = ExtResource("10_8xdwx")
+hurt_shader = SubResource("ShaderMaterial_ivxim")
+
+[node name="DyingTimer" type="Timer" parent="StateMachine/Dying" unique_id=1055466963]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342907986]
 position = Vector2(0, 3)
@@ -379,4 +392,5 @@ collision_mask = 64
 shape = SubResource("CapsuleShape2D_fj3kv")
 
 [connection signal="timeout" from="StateMachine/Attacking/AttackCooldown" to="StateMachine/Attacking" method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="StateMachine/Dying/DyingTimer" to="StateMachine/Dying" method="_on_dying_timer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
