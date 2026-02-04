@@ -4,6 +4,7 @@
 
 [node name="Main" type="Node" unique_id=555734986]
 script = ExtResource("1_ig7tw")
+start_in_game = true
 
 [node name="SceneHolder" type="Node" parent="." unique_id=1686800311]
 unique_name_in_owner = true

@@ -2,9 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://bdtuqx6u1om4r" path="res://game/entities/player/assets/character.png" id="1_1a4jd"]
 [ext_resource type="Script" uid="uid://gopbw3v44p0r" path="res://game/entities/player/player.gd" id="1_gqtae"]
+[ext_resource type="Shader" uid="uid://cyqt8b4vla08x" path="res://game/entities/player/assets/player_hurt.gdshader" id="1_v0nmi"]
 [ext_resource type="PackedScene" uid="uid://ynlmtw5ql0p2" path="res://game/entities/player/hitbox/player_hitboxes.tscn" id="3_x4rrl"]
 [ext_resource type="Script" uid="uid://d2xx2oudm0vxn" path="res://game/entities/player/movement.gd" id="4_cjfdk"]
 [ext_resource type="Script" uid="uid://bhloj211seka1" path="res://game/entities/player/attack.gd" id="5_oic1i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0nmi"]
+shader = ExtResource("1_v0nmi")
+shader_parameter/shock_color = Color(1, 0, 0, 1)
+shader_parameter/amplitude = 10.0
+shader_parameter/move_damping = 5.0
+shader_parameter/frequecy = 15.0
+shader_parameter/color_fade = 5.0
+shader_parameter/elapsed = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtae"]
 radius = 4.0
@@ -315,6 +325,7 @@ collision_mask = 13
 script = ExtResource("1_gqtae")
 hitboxes = NodePath("HitBoxes")
 max_health = 40
+damage_shader = SubResource("ShaderMaterial_v0nmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1504673996]
 shape = SubResource("CapsuleShape2D_gqtae")
@@ -345,6 +356,11 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=452823778]
 position = Vector2(-1, -6)
 shape = SubResource("CapsuleShape2D_oic1i")
+
+[node name="TakeDamage" type="Node" parent="." unique_id=1937701485]
+
+[node name="InvincibilityTimer" type="Timer" parent="." unique_id=594177420]
+wait_time = 3.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

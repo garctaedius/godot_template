@@ -9,9 +9,6 @@ add options:
 Player:
 	Add take damage animation
 
-Enemy:
-	Fix bubble: maybe have the enemy spawn it, and change it from rigid body?
-
 Camera:
 	add a camera that follows the player
 
