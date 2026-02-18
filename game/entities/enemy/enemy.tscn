@@ -316,6 +316,8 @@ shader_parameter/shock_color = Color(1, 1, 1, 1)
 shader_parameter/blink_duration = 2.0
 shader_parameter/num_blinks = 3
 shader_parameter/_elapsed = 0.0
+shader_parameter/move_horizontal = true
+shader_parameter/move_positive = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgysd"]
 radius = 5.0

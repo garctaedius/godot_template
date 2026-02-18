@@ -15,11 +15,22 @@ func enter():
 	var shader: Material = enemy.animated_sprite.material
 	timer.start(move_duration + blink_duration)
 	
+	# Find direction of attack
+	var direction: Utils.Direction = enemy.damage_direction
+	if direction == Utils.Direction.NONE:
+		direction = Utils.Direction.UP
+		
 	# Set shader parameters
 	shader.set_shader_parameter("amplitude", move_amplitude)
 	shader.set_shader_parameter("move_duration", move_duration)
 	shader.set_shader_parameter("blink_duration", blink_duration)
 	shader.set_shader_parameter("num_blinks", num_blinks)
+	
+	# Determine which way to move the sprite based on where it was attacked
+	var move_sign = direction in [Utils.Direction.UP, Utils.Direction.LEFT]
+	shader.set_shader_parameter("move_positive", move_sign)
+	var move_horizontal = direction in [Utils.Direction.RIGHT, Utils.Direction.LEFT]
+	shader.set_shader_parameter("move_horizontal", move_horizontal)
 	
 var _elapsed_time: float = 0
 func update(delta):

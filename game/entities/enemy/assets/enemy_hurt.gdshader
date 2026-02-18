@@ -13,9 +13,24 @@ uniform int num_blinks = 3;
 // The number of seconds since shader started
 uniform float _elapsed = 0.0;
 
+/**
+determines whether to change the x or y coordinate.
+*/
+uniform bool move_horizontal = true;
+/**
+determines whether to increase or decrease pixel value (i.e. move left or 
+right)
+*/
+uniform bool move_positive = true;
+
 void vertex() {
-	float move_amount = min(_elapsed/move_duration * amplitude, amplitude);
-	VERTEX.y -= move_amount;
+	// get 1 or -1 based on if move_positive is true or false respectively
+	int move_sign = -1 + 2*int(move_positive);
+	
+	float move_amount = float(move_sign) * min(_elapsed/move_duration * amplitude, amplitude);
+	
+	VERTEX.x += float(move_horizontal) * move_amount;
+	VERTEX.y += float(!move_horizontal) * move_amount;
 }
 
 void fragment() {

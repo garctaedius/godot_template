@@ -18,3 +18,5 @@ add cut scenes
 add save load
 
 add pause screen
+
+create readme

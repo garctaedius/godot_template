@@ -24,5 +24,7 @@ func take_damage():
 	$HurtBox.set_deferred("monitorable", false)
 	state_machine.change_state("dying")
 	
-func _on_hurt_box_area_entered(_area):
+var damage_direction: Utils.Direction
+func _on_hurt_box_area_entered(area):
+	damage_direction = Utils.get_cardinal_direction(area.global_position - global_position)
 	take_damage()
