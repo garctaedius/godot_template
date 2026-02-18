@@ -374,4 +374,3 @@ shape = SubResource("CapsuleShape2D_oic1i")
 [connection signal="timeout" from="TakeDamage/InvincibilityTimer" to="TakeDamage" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="TakeDamage/StunTimer" to="TakeDamage" method="_on_stun_timer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
