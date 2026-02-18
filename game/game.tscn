@@ -3,16 +3,23 @@
 [ext_resource type="Script" uid="uid://n3kpb2guy5xu" path="res://game/game.gd" id="1_l1rk1"]
 [ext_resource type="PackedScene" uid="uid://qfl67m68fj5n" path="res://game/entities/player/player.tscn" id="2_vasa2"]
 [ext_resource type="PackedScene" uid="uid://du4o0k0g3u7wn" path="res://ui/game_ui/hud/hud.tscn" id="3_h7iqs"]
+[ext_resource type="PackedScene" uid="uid://cfwm40rf3ast" path="res://ui/game_ui/pause_menu/pause_menu.tscn" id="4_4fuuu"]
 
 [node name="Game" type="Node" unique_id=491503302 node_paths=PackedStringArray("player")]
+process_mode = 3
 script = ExtResource("1_l1rk1")
 starting_level_index = 1
 player = NodePath("LevelHolder/Player")
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=565974984]
 unique_name_in_owner = true
+process_mode = 1
 y_sort_enabled = true
 
 [node name="Player" parent="LevelHolder" unique_id=700392969 instance=ExtResource("2_vasa2")]
 
 [node name="HUD" parent="." unique_id=1416087344 instance=ExtResource("3_h7iqs")]
+
+[node name="PauseMenu" parent="." unique_id=1222273399 instance=ExtResource("4_4fuuu")]
+unique_name_in_owner = true
+z_index = 10

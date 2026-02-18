@@ -6,8 +6,6 @@ add options:
 	fullscreen?
 	difficulty?
 	
-Enemy:
-	create little cloud where enemy died.
 
 Camera:
 	add a camera that follows the player
@@ -15,7 +13,5 @@ Camera:
 add cut scenes
 
 add save load
-
-add pause screen
 
 create readme

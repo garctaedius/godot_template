@@ -7,6 +7,8 @@ class_name Main extends Node
 var current_scene: TopLevelNode = null
 
 func _ready():
+	Global._main = self
+	
 	GameState.LastGameState = GameState.LastGameStates.NONE
 	
 	if start_in_game:

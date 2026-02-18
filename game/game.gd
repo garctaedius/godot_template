@@ -32,6 +32,8 @@ func _ready():
 	Global._game = self
 	Global.player = player
 	
+	$PauseMenu.hide()
+	
 	current_level_index = starting_level_index
 	load_current()
 
@@ -49,6 +51,17 @@ func load_current():
 	call_deferred("_connect_level_to_game")
 	
 	level_holder.add_child.call_deferred(current_level_scene)
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		toggle_pause()
+
+func toggle_pause():
+	get_tree().paused = !get_tree().paused
+	if get_tree().paused:
+		$PauseMenu.show()
+	else:
+		$PauseMenu.hide()
 	
 func _connect_level_to_game():
 	# The player only gets moved during physics processing, meaning we have to

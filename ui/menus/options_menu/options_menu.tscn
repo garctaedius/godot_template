@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://13wcsxkv73xt"]
+[gd_scene format=3 uid="uid://13wcsxkv73xt"]
 
 [ext_resource type="Script" uid="uid://bp2xv7x2egvrv" path="res://ui/menus/options_menu/options_menu.gd" id="1_6r3ve"]
 
-[node name="OptionsMenu" type="Control"]
+[node name="OptionsMenu" type="Control" unique_id=1465881759]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6r3ve")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1493589852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=513841258]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,14 +28,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=2112864862]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Options menu"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="MarginContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer" unique_id=22005419]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
