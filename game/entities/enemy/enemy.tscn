@@ -309,6 +309,7 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivxim"]
+resource_local_to_scene = true
 shader = ExtResource("2_ivxim")
 shader_parameter/amplitude = 10.0
 shader_parameter/move_duration = 1.0

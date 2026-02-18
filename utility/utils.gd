@@ -16,6 +16,7 @@ func direction_to_vector(dir: Direction) -> Vector2:
 		Direction.UP: Vector2.UP,
 		Direction.DOWN: Vector2.DOWN,
 		Direction.LEFT: Vector2.LEFT,
-		Direction.RIGHT: Vector2.RIGHT
+		Direction.RIGHT: Vector2.RIGHT,
+		Direction.NONE: Vector2.ZERO
 	}
 	return translator[dir]

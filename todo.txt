@@ -7,7 +7,6 @@ add options:
 	difficulty?
 	
 Enemy:
-	Make take damage shader move the enemy based on from where it got hit
 	create little cloud where enemy died.
 
 Camera:

@@ -6,6 +6,7 @@
 
 [node name="Game" type="Node" unique_id=491503302 node_paths=PackedStringArray("player")]
 script = ExtResource("1_l1rk1")
+starting_level_index = 1
 player = NodePath("LevelHolder/Player")
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=565974984]
