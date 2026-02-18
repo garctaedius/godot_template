@@ -32,16 +32,8 @@ func update(_delta):
 
 func update_animation():
 	if enemy.velocity != Vector2.ZERO:
-		var direction_diff: Dictionary[String, float] = {
-			"up": (enemy.velocity.normalized() - Vector2.UP).length(),
-			"down": (enemy.velocity.normalized() - Vector2.DOWN).length(),
-			"left": (enemy.velocity.normalized() - Vector2.LEFT).length(),
-			"right": (enemy.velocity.normalized() - Vector2.RIGHT).length(),
-		}
-		var min_value = direction_diff.values().min()
-		var direction: String = direction_diff.find_key(min_value)
-			
-		enemy.animated_sprite.play(direction)
+		var direction = Utils.get_cardinal_direction(enemy.velocity)
+		enemy.animated_sprite.play(Utils.direction_to_string(direction))
 	else:
 		enemy.animated_sprite.pause()
 		enemy.animated_sprite.frame = 0

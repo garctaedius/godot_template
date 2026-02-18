@@ -14,7 +14,7 @@ func handle_attack():
 	if Input.is_action_just_pressed("attack"):
 		player.velocity = Vector2.ZERO
 		
-		var animation: String = "attack_" + player.direction
+		var animation: String = "attack_" + Utils.direction_to_string(player.direction)
 		animated_sprite.play(animation)
 		
 		player.hitboxes.activate(player.direction)
@@ -25,5 +25,5 @@ func _on_animated_sprite_2d_animation_finished():
 	if "attack" in animated_sprite.animation:
 		player.is_attacking = false
 		player.hitboxes.deactivate()
-		animated_sprite.animation = player.direction
+		animated_sprite.animation = Utils.direction_to_string(player.direction)
 	

@@ -5,6 +5,7 @@ var player: Player = Global.player
 @onready var player_ray: RayCast2D = %PlayerRay
 @onready var base_pos: Vector2 = global_position
 @onready var nav_agent: NavigationAgent2D = %NavigationAgent2D
+@onready var collision_shape: CollisionShape2D = %CollisionShape2D
 
 @onready var state_machine: EnemyTreeStateMachine = %StateMachine
 

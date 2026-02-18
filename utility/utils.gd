@@ -20,3 +20,13 @@ func direction_to_vector(dir: Direction) -> Vector2:
 		Direction.NONE: Vector2.ZERO
 	}
 	return translator[dir]
+
+func direction_to_string(dir: Direction) -> String:
+	var translator = {
+		Direction.UP: "up",
+		Direction.DOWN: "down",
+		Direction.LEFT: "left",
+		Direction.RIGHT: "right",
+		Direction.NONE: "none"
+	}
+	return translator[dir]

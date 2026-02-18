@@ -14,6 +14,9 @@ var dust_cloud_scene_name: String = "res://game/entities/enemy/dust_cloud/dust_c
 var death_position: Vector2
 
 func enter():
+	# Disable enemy collision
+	enemy.collision_shape.set_deferred("disabled", true)
+	
 	# Set the death shader
 	enemy.animated_sprite.material = hurt_shader
 	var shader: Material = enemy.animated_sprite.material

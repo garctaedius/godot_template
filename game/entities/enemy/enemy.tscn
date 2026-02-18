@@ -377,6 +377,7 @@ hurt_shader = SubResource("ShaderMaterial_ivxim")
 [node name="DyingTimer" type="Timer" parent="StateMachine/Dying" unique_id=1055466963]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342907986]
+unique_name_in_owner = true
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_dgysd")
 

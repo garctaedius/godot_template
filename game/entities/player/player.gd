@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 @export var hitboxes: PlayerHitboxes
 @export var max_health: int = 12
 
-var direction: String = "up"
+var direction: Utils.Direction
 var is_stunned: bool = false
 var is_attacking: bool = false
 
