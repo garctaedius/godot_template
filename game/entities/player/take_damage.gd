@@ -32,7 +32,7 @@ func _process(delta):
 		animated_sprite.material.set_shader_parameter("_elapsed", _elapsed_time)
 		_elapsed_time += delta
 	
-func take_damage(amount: int):
+func take_damage(amount: int, direction: Utils.Direction):
 	if not _can_take_damage:
 		return
 	
@@ -49,10 +49,11 @@ func take_damage(amount: int):
 	animated_sprite.material.set_shader_parameter("frequecy", shift_frequency)
 	animated_sprite.material.set_shader_parameter("move_duration", stun_duration)
 	animated_sprite.material.set_shader_parameter("color_duration", invincibility_time)
-	# Randomly decide whether to move the player left or right (or up or down)
-	var move_sign: bool = bool(randi_range(0, 1))
+	
+	# Determine which way to move the sprite based on where it was attacked
+	var move_sign = direction in [Utils.Direction.UP, Utils.Direction.LEFT]
 	animated_sprite.material.set_shader_parameter("move_positive", move_sign)
-	var move_horizontal = "right" in player.direction or "left" in player.direction
+	var move_horizontal = direction in [Utils.Direction.RIGHT, Utils.Direction.LEFT]
 	animated_sprite.material.set_shader_parameter("move_horizontal", move_horizontal)
 	
 	# Handle player stun

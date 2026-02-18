@@ -39,4 +39,6 @@ func _physics_process(_delta):
 
 func _on_hurt_box_area_entered(area):
 	if area is Bubble:
-		%TakeDamage.take_damage(area.damage)
+		var to_bubble: Vector2 = area.global_position - global_position
+		var direction: Utils.Direction = Utils.get_cardinal_direction(to_bubble)
+		%TakeDamage.take_damage(area.damage, direction)
