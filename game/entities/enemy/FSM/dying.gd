@@ -8,6 +8,8 @@ extends EnemyTreeState
 @export var blink_duration: float = 2
 @export var num_blinks: float = 3
 
+@export var dying_sound: AudioStream
+
 @onready var timer: Timer = $DyingTimer
 
 var dust_cloud_scene_name: String = "res://game/entities/enemy/dust_cloud/dust_cloud.tscn"
@@ -54,11 +56,15 @@ func update(delta):
 	_elapsed_time += delta
 	
 func create_dust_cloud():
-	var dust_cloud: AnimatedSprite2D = load(dust_cloud_scene_name).instantiate()
+	var dust_cloud: DustCloud = load(dust_cloud_scene_name).instantiate()
 	
 	dust_cloud.global_position = death_position
+	
 	Global.current_level.add_child(dust_cloud)
+	
+	dust_cloud.set_sound_and_play(dying_sound)
 
 func _on_dying_timer_timeout():
 	create_dust_cloud()
+	
 	enemy.queue_free()

@@ -67,4 +67,7 @@ frame = 6
 frame_progress = 1.0
 script = ExtResource("1_cgjeq")
 
+[node name="Player" type="AudioStreamPlayer2D" parent="." unique_id=1916051747]
+bus = &"SFX"
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

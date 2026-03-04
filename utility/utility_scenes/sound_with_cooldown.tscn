@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c0y1ki1626j1x"]
+
+[ext_resource type="Script" uid="uid://eqayqpyg0q4r" path="res://utility/utility_scenes/sound_with_cooldown.gd" id="1_758gq"]
+
+[node name="SoundWithCooldown" type="AudioStreamPlayer2D" unique_id=1653618626]
+script = ExtResource("1_758gq")
+
+[node name="Timer" type="Timer" parent="." unique_id=651174687]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -29,6 +29,8 @@ func get_dir_from_agent() -> Vector2:
 		
 func update(_delta):
 	update_animation()
+	
+	enemy.play_step_sound()
 
 func update_animation():
 	if enemy.velocity != Vector2.ZERO:

@@ -22,8 +22,13 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func take_damage():
+	$TakeDamagePlayer.play()
+	
 	$HurtBox.set_deferred("monitorable", false)
 	state_machine.change_state("dying")
+	
+func play_step_sound():
+	$StepPlayer.play_sound_with_cooldown()
 	
 var damage_direction: Utils.Direction
 func _on_hurt_box_area_entered(area):

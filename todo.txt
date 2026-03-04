@@ -1,7 +1,6 @@
-Add sound effects and music
+Add sound effects
 
 add options:
-	sound volume
 	key bindings
 	fullscreen?
 	difficulty?

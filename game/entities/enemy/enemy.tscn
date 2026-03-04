@@ -8,9 +8,14 @@
 [ext_resource type="Script" uid="uid://c6iw6rty7o1bi" path="res://game/entities/enemy/FSM/hunting_state.gd" id="5_aymlg"]
 [ext_resource type="Script" uid="uid://blo516lu6v6m6" path="res://game/entities/enemy/FSM/attacking_state.gd" id="6_hbu1e"]
 [ext_resource type="Script" uid="uid://bdomsrjjevio4" path="res://game/entities/enemy/FSM/back_to_base_state.gd" id="7_dgo0o"]
+[ext_resource type="AudioStream" uid="uid://bugg6gif57c67" path="res://general_assets/sound_effects/blonk_retro.wav" id="7_x1qyp"]
 [ext_resource type="Script" uid="uid://d0n5xv5e3jqia" path="res://game/entities/enemy/FSM/falling_asleep_state.gd" id="8_w7g26"]
 [ext_resource type="Script" uid="uid://cbdikkckfvjir" path="res://game/entities/enemy/FSM/waking_state.gd" id="9_fj3kv"]
 [ext_resource type="Script" uid="uid://bx5m3bdnc0vr4" path="res://game/entities/enemy/FSM/dying.gd" id="10_8xdwx"]
+[ext_resource type="AudioStream" uid="uid://bwfja4xyd2idc" path="res://general_assets/sound_effects/light_step_retro.wav" id="12_2lrvt"]
+[ext_resource type="AudioStream" uid="uid://4t0je2lthr0q" path="res://general_assets/sound_effects/enemy_die_retro.wav" id="12_x7x8t"]
+[ext_resource type="AudioStream" uid="uid://b1dtohu865jl0" path="res://general_assets/sound_effects/heavy_step_retro.wav" id="15_06hec"]
+[ext_resource type="PackedScene" uid="uid://c0y1ki1626j1x" path="res://utility/utility_scenes/sound_with_cooldown.tscn" id="16_e1o73"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dfpe"]
 atlas = ExtResource("2_8xdwx")
@@ -328,6 +333,12 @@ height = 10.0
 radius = 7.0
 height = 22.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0lp1r"]
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("15_06hec")
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1755322121]
 collision_layer = 4
 collision_mask = 7
@@ -338,7 +349,7 @@ script = ExtResource("1_dgysd")
 unique_name_in_owner = true
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_4sqhg")
-animation = &"attacking_up"
+animation = &"down"
 
 [node name="PlayerRay" type="RayCast2D" parent="." unique_id=170126020]
 unique_name_in_owner = true
@@ -361,6 +372,11 @@ script = ExtResource("6_hbu1e")
 
 [node name="AttackCooldown" type="Timer" parent="StateMachine/Attacking" unique_id=1632850987]
 
+[node name="AttackPlayer" type="AudioStreamPlayer2D" parent="StateMachine/Attacking" unique_id=732516414]
+stream = ExtResource("7_x1qyp")
+pitch_scale = 1.5
+bus = &"SFX"
+
 [node name="BackToBase" type="Node" parent="StateMachine" unique_id=274996832]
 script = ExtResource("7_dgo0o")
 
@@ -373,6 +389,7 @@ script = ExtResource("9_fj3kv")
 [node name="Dying" type="Node" parent="StateMachine" unique_id=450535017]
 script = ExtResource("10_8xdwx")
 hurt_shader = SubResource("ShaderMaterial_ivxim")
+dying_sound = ExtResource("12_x7x8t")
 
 [node name="DyingTimer" type="Timer" parent="StateMachine/Dying" unique_id=1055466963]
 
@@ -394,6 +411,14 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2002604088]
 shape = SubResource("CapsuleShape2D_fj3kv")
+
+[node name="TakeDamagePlayer" type="AudioStreamPlayer2D" parent="." unique_id=379352060]
+stream = ExtResource("12_2lrvt")
+
+[node name="StepPlayer" parent="." unique_id=1653618626 instance=ExtResource("16_e1o73")]
+stream = SubResource("AudioStreamRandomizer_0lp1r")
+volume_db = -15.0
+cooldown = 0.4
 
 [connection signal="timeout" from="StateMachine/Attacking/AttackCooldown" to="StateMachine/Attacking" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="StateMachine/Dying/DyingTimer" to="StateMachine/Dying" method="_on_dying_timer_timeout"]

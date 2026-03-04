@@ -58,6 +58,8 @@ func shoot_bubble():
 	bubble_scene.direction = player_vector.normalized()
 	
 	SignalBus.spawn_projectile.emit(bubble_scene, enemy.global_position)
+	
+	$AttackPlayer.play()
 
 func _on_attack_cooldown_timeout():
 	if state_machine.current_state != self:
