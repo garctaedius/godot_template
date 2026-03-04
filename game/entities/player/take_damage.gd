@@ -70,6 +70,9 @@ func take_damage(amount: int, direction: Utils.Direction):
 		animated_sprite.stop()
 	else:
 		print(animated_sprite.animation)
+		
+	# Play damage sound effect
+	player.sfx_player.damage_player.play()
 	
 func _on_stun_timer_timeout():
 	player.is_stunned = false

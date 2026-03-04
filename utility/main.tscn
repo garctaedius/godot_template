@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://dcj8i1iuuxwol"]
 
 [ext_resource type="Script" uid="uid://05f34mqndb83" path="res://utility/main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://co8dc4lxabg44" path="res://utility/default_audio_settings.gd" id="2_6c6r0"]
 
 [node name="Main" type="Node" unique_id=555734986]
 script = ExtResource("1_ig7tw")
-start_in_game = true
 
 [node name="SceneHolder" type="Node" parent="." unique_id=1686800311]
 unique_name_in_owner = true
+
+[node name="DefaultAudioSettings" type="Node" parent="." unique_id=1910545411]
+script = ExtResource("2_6c6r0")
+master = 70
+music = 15
+sfx = 90

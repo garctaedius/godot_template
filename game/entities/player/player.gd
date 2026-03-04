@@ -11,6 +11,8 @@ var is_attacking: bool = false
 
 var animated_sprite: AnimatedSprite2D
 
+var sfx_player: PlayerSFXPlayer
+
 signal health_changed(new_health: int)
 var current_health: int:
 	set(value):
@@ -20,6 +22,7 @@ var current_health: int:
 
 func _ready():
 	animated_sprite = %AnimatedSprite2D
+	sfx_player = %SFXplayers
 	
 	animated_sprite.animation = "up"
 	%Movement.connect_to_player(self, animated_sprite)	

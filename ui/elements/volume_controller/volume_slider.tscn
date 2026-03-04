@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://g48gai47pn74"]
+
+[node name="VolumeSlider" type="HSlider" unique_id=376508720]
+offset_right = 8.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.01
+value = 0.5

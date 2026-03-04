@@ -29,10 +29,14 @@ func connect_to_main(main: Main):
 	super(main)
 
 func _ready():
+	super()
+	
 	Global._game = self
 	Global.player = player
 	
 	$PauseMenu.hide()
+	
+	music_player.play()
 	
 	current_level_index = starting_level_index
 	load_current()

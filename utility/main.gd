@@ -6,7 +6,7 @@ class_name Main extends Node
 
 var current_scene: TopLevelNode = null
 
-func _ready():
+func _ready():	
 	Global._main = self
 	
 	GameState.LastGameState = GameState.LastGameStates.NONE
@@ -15,6 +15,8 @@ func _ready():
 		call_deferred("load_game")
 	else:
 		call_deferred("load_main_menu")
+	
+	set_default_audio()
 	
 
 func load_main_menu():
@@ -46,3 +48,8 @@ func swap_fullscreen_mode():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+func set_default_audio():
+	for bus in $DefaultAudioSettings.sound_settings.keys():
+		var level: float = $DefaultAudioSettings.sound_settings[bus] / 100
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear_to_db(level))

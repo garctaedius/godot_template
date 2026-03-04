@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://qfl67m68fj5n" path="res://game/entities/player/player.tscn" id="2_vasa2"]
 [ext_resource type="PackedScene" uid="uid://du4o0k0g3u7wn" path="res://ui/game_ui/hud/hud.tscn" id="3_h7iqs"]
 [ext_resource type="PackedScene" uid="uid://cfwm40rf3ast" path="res://ui/game_ui/pause_menu/pause_menu.tscn" id="4_4fuuu"]
+[ext_resource type="AudioStream" uid="uid://dgr006lvwt3x0" path="res://general_assets/music/game_music_lassolady.ogg" id="5_dxrkv"]
 
-[node name="Game" type="Node" unique_id=491503302 node_paths=PackedStringArray("player")]
+[node name="Game" type="Node" unique_id=491503302 node_paths=PackedStringArray("player", "music_player")]
 process_mode = 3
 script = ExtResource("1_l1rk1")
 starting_level_index = 1
 player = NodePath("LevelHolder/Player")
+music_player = NodePath("MusicPlayer")
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=565974984]
 unique_name_in_owner = true
@@ -23,3 +25,6 @@ y_sort_enabled = true
 [node name="PauseMenu" parent="." unique_id=1222273399 instance=ExtResource("4_4fuuu")]
 unique_name_in_owner = true
 z_index = 10
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1440965256]
+stream = ExtResource("5_dxrkv")

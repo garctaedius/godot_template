@@ -8,10 +8,12 @@ func connect_to_player(_player: Player, _animated_sprite: AnimatedSprite2D):
 	animated_sprite = _animated_sprite
 	
 func handle_attack():
-	if player.is_stunned or player.is_attacking:
+	if not can_attack():
 		return
 		
 	if Input.is_action_just_pressed("attack"):
+		player.sfx_player.attack_player.play()
+		
 		player.velocity = Vector2.ZERO
 		
 		var animation: String = "attack_" + Utils.direction_to_string(player.direction)
@@ -20,6 +22,11 @@ func handle_attack():
 		player.hitboxes.activate(player.direction)
 		
 		player.is_attacking = true
+		
+func can_attack() -> bool:
+	if player.is_stunned or player.is_attacking:
+		return false
+	return true
 
 func _on_animated_sprite_2d_animation_finished():
 	if "attack" in animated_sprite.animation:

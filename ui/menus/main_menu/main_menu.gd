@@ -7,6 +7,8 @@ class_name MainMenu extends TopLevelNode
 @onready var lose_menu: LoseMenu = %LoseMenu
 
 func _ready():
+	super()
+	
 	match GameState.LastGameState:
 		GameState.LastGameStates.NONE:
 			show_start_menu()
@@ -26,6 +28,8 @@ func connect_to_main(main: Main):
 	start_menu.start_button.connect("pressed", main.load_game)			
 	
 func show_start_menu():
+	if not music_player.playing:
+		music_player.play()
 	_show_menu(start_menu)
 	
 func show_options_menu():
