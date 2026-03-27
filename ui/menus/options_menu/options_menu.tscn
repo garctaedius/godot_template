@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp2xv7x2egvrv" path="res://ui/menus/options_menu/options_menu.gd" id="1_6r3ve"]
 [ext_resource type="PackedScene" uid="uid://boxibi8ttsfqe" path="res://ui/elements/volume_controller/volume_controller.tscn" id="2_csl58"]
+[ext_resource type="PackedScene" uid="uid://buk1ws6us48s" path="res://ui/menus/controls_menu/controls_menu.tscn" id="3_8oxc3"]
 
 [node name="OptionsMenu" type="Control" unique_id=1465881759]
 layout_mode = 3
@@ -21,7 +22,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3019608, 0.3019608, 0.3019608, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=513841258]
+[node name="ControlsMenu" parent="." unique_id=120366283 instance=ExtResource("3_8oxc3")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="BasicOptions" type="Control" parent="." unique_id=1889539619]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,50 +35,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OptionsContainer" type="MarginContainer" parent="MarginContainer" unique_id=945846731]
+[node name="MarginContainer" type="MarginContainer" parent="BasicOptions" unique_id=513841258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsContainer" type="MarginContainer" parent="BasicOptions/MarginContainer" unique_id=945846731]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/OptionsContainer" unique_id=1502796128]
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicOptions/MarginContainer/OptionsContainer" unique_id=1502796128]
 layout_mode = 2
 
-[node name="MasterVolumeLabel" type="Label" parent="MarginContainer/OptionsContainer/VBoxContainer" unique_id=1600973232]
+[node name="MasterVolumeLabel" type="Label" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=1600973232]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Master Volume"
 
-[node name="MasterVolumeController" parent="MarginContainer/OptionsContainer/VBoxContainer" unique_id=157211903 instance=ExtResource("2_csl58")]
+[node name="MasterVolumeController" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=157211903 instance=ExtResource("2_csl58")]
 layout_mode = 2
 bus_name = "Master"
 
-[node name="MusicVolumeLabel" type="Label" parent="MarginContainer/OptionsContainer/VBoxContainer" unique_id=1523817637]
+[node name="MusicVolumeLabel" type="Label" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=1523817637]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Music Volume"
 
-[node name="MusicVolumeController2" parent="MarginContainer/OptionsContainer/VBoxContainer" unique_id=1672674319 instance=ExtResource("2_csl58")]
+[node name="MusicVolumeController2" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=1672674319 instance=ExtResource("2_csl58")]
 layout_mode = 2
 bus_name = "Music"
 
-[node name="SFXVolumeLabel" type="Label" parent="MarginContainer/OptionsContainer/VBoxContainer" unique_id=1343214052]
+[node name="SFXVolumeLabel" type="Label" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=1343214052]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Sound Effects Volume"
 
-[node name="SFXVolumeController3" parent="MarginContainer/OptionsContainer/VBoxContainer" unique_id=725707573 instance=ExtResource("2_csl58")]
+[node name="SFXVolumeController3" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=725707573 instance=ExtResource("2_csl58")]
 layout_mode = 2
 bus_name = "SFX"
 
-[node name="Label" type="Label" parent="MarginContainer" unique_id=2112864862]
+[node name="Label" type="Label" parent="BasicOptions/MarginContainer" unique_id=2112864862]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Options menu"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="MarginContainer" unique_id=22005419]
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicOptions/MarginContainer" unique_id=1226577480]
+layout_mode = 2
+alignment = 1
+
+[node name="ControlsButton" type="Button" parent="BasicOptions/MarginContainer/VBoxContainer" unique_id=298085405]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Controls"
+
+[node name="BackButton" type="Button" parent="BasicOptions/MarginContainer/VBoxContainer" unique_id=22005419]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

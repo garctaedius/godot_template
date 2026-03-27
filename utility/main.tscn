@@ -5,13 +5,9 @@
 
 [node name="Main" type="Node" unique_id=555734986]
 script = ExtResource("1_ig7tw")
-start_in_game = true
 
 [node name="SceneHolder" type="Node" parent="." unique_id=1686800311]
 unique_name_in_owner = true
 
 [node name="DefaultAudioSettings" type="Node" parent="." unique_id=1910545411]
 script = ExtResource("2_6c6r0")
-master = 100
-music = 0
-sfx = 100

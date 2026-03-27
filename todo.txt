@@ -5,8 +5,6 @@ add options:
 	fullscreen?
 	difficulty?
 	
-Camera:
-	add a camera that follows the player
 
 add cut scenes
 

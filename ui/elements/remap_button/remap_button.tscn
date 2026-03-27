@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dgsusfk5e6uww"]
+
+[ext_resource type="Script" uid="uid://blx68unopgh1r" path="res://ui/elements/remap_button/remap_button.gd" id="1_5yjkp"]
+
+[node name="RemapButton" type="Button" unique_id=529544006]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_5yjkp")
