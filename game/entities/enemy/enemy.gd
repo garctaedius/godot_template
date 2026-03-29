@@ -21,7 +21,12 @@ var player: Player = Global.player
 func _physics_process(_delta):
 	move_and_slide()
 
+var invincible = false
 func take_damage():
+	if invincible:
+		return
+		
+	invincible = true
 	$TakeDamagePlayer.play()
 	
 	$HurtBox.set_deferred("monitorable", false)
