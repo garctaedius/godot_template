@@ -83,17 +83,18 @@ text = "W"
 layout_mode = 2
 text = "Up Arrow"
 
-[node name="UpLabel4" type="Label" parent="ButtonContainer" unique_id=185597565]
+[node name="AttackLabel" type="Label" parent="ButtonContainer" unique_id=185597565]
 layout_mode = 2
-text = "Up"
+text = "Attack"
 
-[node name="UpButton7" type="Button" parent="ButtonContainer" unique_id=787912538]
+[node name="AttackButton1" parent="ButtonContainer" unique_id=1572162918 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "W"
+action = "attack"
 
-[node name="UpButton8" type="Button" parent="ButtonContainer" unique_id=1496981397]
+[node name="AttackButton2" parent="ButtonContainer" unique_id=1445807038 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "Up Arrow"
+key_index = 1
+action = "attack"
 
 [node name="UpLabel5" type="Label" parent="ButtonContainer" unique_id=727078834]
 layout_mode = 2

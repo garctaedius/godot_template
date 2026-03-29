@@ -36,7 +36,10 @@ func _unhandled_input(event):
 				return
 		
 		# Update the events for the action.
-		all_events[key_index] = event
+		if key_index >= len(all_events):
+			all_events.append(event)
+		else:
+			all_events[key_index] = event
 		
 		# Need to erase all events and recreate them to keep the correct order
 		InputMap.action_erase_events(action)
@@ -48,4 +51,14 @@ func _unhandled_input(event):
 
 
 func update_key_text():
-	text = InputMap.action_get_events(action)[key_index].as_text()
+	var events = InputMap.action_get_events(action)
+	if key_index >= len(events):
+		text = "not set"
+		return
+	
+	var new_text = events[key_index].as_text()
+	
+	# Only keep text up to brackets (sometimes raw_text="W - Physical")
+	new_text = new_text.get_slice(" ", 0)
+	
+	text = new_text
