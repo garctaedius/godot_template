@@ -25,24 +25,57 @@ text = "Controls"
 
 [node name="ButtonContainer" type="GridContainer" parent="." unique_id=1306948316]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 269.0
-offset_top = 137.0
-offset_right = 451.0
-offset_bottom = 343.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -89.0
+offset_right = 145.5
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
 columns = 3
 
+[node name="ActionLabel" type="Label" parent="ButtonContainer" unique_id=2145759994]
+layout_mode = 2
+text = "Action"
+
+[node name="PrimaryLabel" type="Label" parent="ButtonContainer" unique_id=1755123824]
+layout_mode = 2
+text = "Primary"
+
+[node name="SecondaryLabel" type="Label" parent="ButtonContainer" unique_id=1648670816]
+layout_mode = 2
+text = "Secondary"
+
+[node name="VSeparator" type="HSeparator" parent="ButtonContainer" unique_id=703593824]
+layout_mode = 2
+
+[node name="VSeparator2" type="HSeparator" parent="ButtonContainer" unique_id=1733170525]
+layout_mode = 2
+
+[node name="VSeparator3" type="HSeparator" parent="ButtonContainer" unique_id=440319418]
+layout_mode = 2
+
 [node name="UpLabel" type="Label" parent="ButtonContainer" unique_id=518232983]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Up"
 
 [node name="UpButton1" parent="ButtonContainer" unique_id=529544006 instance=ExtResource("2_8egwr")]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 action = "move_up"
 
 [node name="UpButton2" parent="ButtonContainer" unique_id=1484356745 instance=ExtResource("2_8egwr")]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 key_index = 1
 action = "move_up"
@@ -51,37 +84,40 @@ action = "move_up"
 layout_mode = 2
 text = "Down"
 
-[node name="DownButton1" type="Button" parent="ButtonContainer" unique_id=961854549]
+[node name="DownButton1" parent="ButtonContainer" unique_id=377703151 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "S"
+action = "move_down"
 
-[node name="DownButton2" type="Button" parent="ButtonContainer" unique_id=1891199477]
+[node name="DownButton2" parent="ButtonContainer" unique_id=37760123 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "Down Arrow"
+key_index = 1
+action = "move_down"
 
-[node name="UpLabel2" type="Label" parent="ButtonContainer" unique_id=1165109949]
+[node name="RightLabel" type="Label" parent="ButtonContainer" unique_id=1165109949]
 layout_mode = 2
-text = "Up"
+text = "Right"
 
-[node name="UpButton3" type="Button" parent="ButtonContainer" unique_id=1249002505]
+[node name="RightButton1" parent="ButtonContainer" unique_id=609983314 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "W"
+action = "move_right"
 
-[node name="UpButton4" type="Button" parent="ButtonContainer" unique_id=204152554]
+[node name="RightButton2" parent="ButtonContainer" unique_id=849325606 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "Up Arrow"
+key_index = 1
+action = "move_right"
 
-[node name="UpLabel3" type="Label" parent="ButtonContainer" unique_id=1120176981]
+[node name="LeftLabel" type="Label" parent="ButtonContainer" unique_id=1120176981]
 layout_mode = 2
-text = "Up"
+text = "Left"
 
-[node name="UpButton5" type="Button" parent="ButtonContainer" unique_id=2122650426]
+[node name="LeftButton1" parent="ButtonContainer" unique_id=2135474900 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "W"
+action = "move_left"
 
-[node name="UpButton6" type="Button" parent="ButtonContainer" unique_id=111917393]
+[node name="LeftButton2" parent="ButtonContainer" unique_id=1695867283 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "Up Arrow"
+key_index = 1
+action = "move_left"
 
 [node name="AttackLabel" type="Label" parent="ButtonContainer" unique_id=185597565]
 layout_mode = 2
@@ -96,17 +132,18 @@ layout_mode = 2
 key_index = 1
 action = "attack"
 
-[node name="UpLabel5" type="Label" parent="ButtonContainer" unique_id=727078834]
+[node name="PauseLabel" type="Label" parent="ButtonContainer" unique_id=727078834]
 layout_mode = 2
-text = "Up"
+text = "Pause"
 
-[node name="UpButton9" type="Button" parent="ButtonContainer" unique_id=1880985282]
+[node name="PauseButton1" parent="ButtonContainer" unique_id=346674176 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "W"
+action = "pause"
 
-[node name="UpButton10" type="Button" parent="ButtonContainer" unique_id=1657997560]
+[node name="PauseButton2" parent="ButtonContainer" unique_id=147863750 instance=ExtResource("2_8egwr")]
 layout_mode = 2
-text = "Up Arrow"
+key_index = 1
+action = "pause"
 
 [node name="BackButton" type="Button" parent="." unique_id=1487660146]
 unique_name_in_owner = true

@@ -20,20 +20,28 @@ func _toggled(is_button_pressed):
 	if is_button_pressed:
 		release_focus()
 		setting_key.emit(self)
+		GameState.can_unpause = false
 	else:
 		update_key_text()
 		grab_focus()
 		release_key.emit()
+		call_deferred("_set_can_unpause")
 	
+func _set_can_unpause():
+	GameState.can_unpause = true
 
 func _unhandled_input(event):
 	if event.pressed:
-		var all_events = InputMap.action_get_events(action)
-		
-		# Ignore press if event already exists for this action
-		for e in all_events:
-			if event.is_match(e):
+		# Ignore press if event already exists
+		for a in InputMap.get_actions():
+			if a.contains("ui"):
+				# Built-in actions contain prefix "ui"
+				continue
+			if InputMap.event_is_action(event, a):
 				return
+		
+		# Get all events for this action
+		var all_events = InputMap.action_get_events(action)
 		
 		# Update the events for the action.
 		if key_index >= len(all_events):

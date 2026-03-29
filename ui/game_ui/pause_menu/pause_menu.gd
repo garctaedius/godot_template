@@ -20,3 +20,6 @@ func connect_option_menu_buttons():
 func unload_options_menu():
 	if options_menu:
 		options_menu.queue_free()
+
+func reset():
+	unload_options_menu()

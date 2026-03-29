@@ -61,10 +61,12 @@ func _process(_delta):
 		toggle_pause()
 
 func toggle_pause():
-	get_tree().paused = !get_tree().paused
-	if get_tree().paused:
+	if !get_tree().paused:
+		get_tree().paused = true
 		$PauseMenu.show()
-	else:
+	elif get_tree().paused and GameState.can_unpause:
+		get_tree().paused = false
+		$PauseMenu.reset()
 		$PauseMenu.hide()
 	
 func _connect_level_to_game():
