@@ -5,6 +5,7 @@ class_name RemapButton extends Button
 
 signal setting_key(button: RemapButton)
 signal release_key
+signal remapped_action(action: String, events: Array[InputEvent])
 
 func _init():
 	toggle_mode = true
@@ -56,6 +57,8 @@ func _unhandled_input(event):
 			InputMap.action_add_event(action, e)
 		
 		button_pressed = false
+		
+		remapped_action.emit(action, all_events)
 
 
 func update_key_text():

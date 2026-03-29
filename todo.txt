@@ -1,7 +1,8 @@
 Add sound effects
+	UI sound effects
 
 add options:
-	key bindings
+	save sound settings
 	fullscreen?
 	difficulty?
 	

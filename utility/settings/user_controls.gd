@@ -1,12 +1,17 @@
 class_name UserControls extends Resource
 
-@export var up_button: InputEvent
+@export var action_mappings: Dictionary[String, Array]
+
+const CONTORLS_PATH: String = "user://user_controls.tres"
 
 func save():
-	ResourceSaver.save(self, "user://user_controls.tres")
+	ResourceSaver.save(self, CONTORLS_PATH)
 
 static func load_or_create() -> UserControls:
-	var res: UserControls = load("user://user_controls.tres") as UserControls
-	if !res:
+	var res: UserControls
+	if FileAccess.file_exists(CONTORLS_PATH):
+		res = load(CONTORLS_PATH)
+	else:
 		res = UserControls.new()
+		
 	return res
