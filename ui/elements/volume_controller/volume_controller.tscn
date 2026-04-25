@@ -26,6 +26,7 @@ size_flags_vertical = 4
 
 [node name="ValueUpdater" type="Timer" parent="." unique_id=1954570656]
 wait_time = 0.1
+one_shot = true
 
 [connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="timeout" from="ValueUpdater" to="." method="_on_value_updater_timeout"]

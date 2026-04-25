@@ -16,8 +16,6 @@ func _ready():
 	else:
 		call_deferred("load_main_menu")
 	
-	set_default_audio()
-	
 
 func load_main_menu():
 	load_scene("res://ui/menus/main_menu/main_menu.tscn")
@@ -48,8 +46,3 @@ func swap_fullscreen_mode():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-
-func set_default_audio():
-	for bus in $DefaultAudioSettings.sound_settings.keys():
-		var level: float = $DefaultAudioSettings.sound_settings[bus] / 100
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear_to_db(level))

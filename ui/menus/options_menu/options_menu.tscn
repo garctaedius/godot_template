@@ -59,6 +59,7 @@ size_flags_horizontal = 4
 text = "Master Volume"
 
 [node name="MasterVolumeController" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=157211903 instance=ExtResource("2_csl58")]
+unique_name_in_owner = true
 layout_mode = 2
 bus_name = "Master"
 
@@ -67,7 +68,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Music Volume"
 
-[node name="MusicVolumeController2" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=1672674319 instance=ExtResource("2_csl58")]
+[node name="MusicVolumeController" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=1672674319 instance=ExtResource("2_csl58")]
+unique_name_in_owner = true
 layout_mode = 2
 bus_name = "Music"
 
@@ -76,7 +78,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Sound Effects Volume"
 
-[node name="SFXVolumeController3" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=725707573 instance=ExtResource("2_csl58")]
+[node name="SFXVolumeController" parent="BasicOptions/MarginContainer/OptionsContainer/VBoxContainer" unique_id=725707573 instance=ExtResource("2_csl58")]
+unique_name_in_owner = true
 layout_mode = 2
 bus_name = "SFX"
 

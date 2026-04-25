@@ -1,4 +1,6 @@
-extends HBoxContainer
+class_name VolumeController extends HBoxContainer
+
+signal slider_value_changed(bus: String, level: float)
 
 @export var bus_name: String
 
@@ -18,6 +20,13 @@ func update_value():
 	var level: float = volume_slider.value
 	label.text = str(int(level * 100))
 	AudioServer.set_bus_volume_db(bus_id, linear_to_db(level))
+	
+	slider_value_changed.emit(bus_name, level)
+	
+func set_value(level: float):
+	volume_slider.value = level
+	label.text = str(int(level * 100))
+	AudioServer.set_bus_volume_db(bus_id, linear_to_db(level))
 
 var can_change_value: bool = true
 func _on_volume_slider_value_changed(_value):
@@ -25,7 +34,7 @@ func _on_volume_slider_value_changed(_value):
 		can_change_value = false
 		value_updater.start()
 		
-		update_value()
+		# update_value()
 
 func _on_value_updater_timeout():
 	can_change_value = true
