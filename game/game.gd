@@ -40,6 +40,8 @@ func _ready():
 	
 	current_level_index = starting_level_index
 	load_current()
+	
+	print("Paused on game start:", get_tree().paused)
 
 func load_current():
 	if current_level_scene:

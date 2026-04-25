@@ -29,6 +29,7 @@ Global="*res://utility/global.gd"
 GameState="*res://utility/game_state.gd"
 SignalBus="*uid://bcehmvjixr8hw"
 Utils="*uid://dunuy61qhuvl1"
+UiSoundAdder="*uid://b3hhw4rtwy3lb"
 
 [display]
 

@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dclrpbocvc31u"]
+[gd_scene format=3 uid="uid://dclrpbocvc31u"]
 
 [ext_resource type="Script" uid="uid://bk8w8ra5v83q8" path="res://ui/menus/start_menu/start_menu.gd" id="1_3kg5v"]
 [ext_resource type="PackedScene" uid="uid://cilqvuvabdmjj" path="res://ui/elements/exit_button/exit_button.tscn" id="2_cderr"]
 
-[node name="StartMenu" type="Control"]
+[node name="StartMenu" type="Control" unique_id=157753114]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3kg5v")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1508136259]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,32 +20,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=847106656]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Start menu"
 horizontal_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer" unique_id=1401661870]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="StartButton" type="Button" parent="MarginContainer/Buttons"]
+[node name="StartButton" type="Button" parent="MarginContainer/Buttons" unique_id=132733866]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start Game"
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/Buttons"]
+[node name="OptionsButton" type="Button" parent="MarginContainer/Buttons" unique_id=406314883]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="MarginContainer/Buttons"]
+[node name="CreditsButton" type="Button" parent="MarginContainer/Buttons" unique_id=1086283405]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Credits"
 
-[node name="ExitButton" parent="MarginContainer/Buttons" instance=ExtResource("2_cderr")]
+[node name="ExitButton" parent="MarginContainer/Buttons" unique_id=164535647 instance=ExtResource("2_cderr")]
 layout_mode = 2
