@@ -2,7 +2,6 @@ Add sound effects
 	UI sound effects
 
 add options:
-	save sound settings
 	fullscreen?
 	difficulty?
 	
