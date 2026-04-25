@@ -389,7 +389,7 @@ step_player = NodePath("StepPlayer")
 
 [node name="StepPlayer" parent="SFXplayers" unique_id=1653618626 instance=ExtResource("9_t56eh")]
 stream = SubResource("AudioStreamRandomizer_6pmmc")
-volume_db = -10.0
+volume_db = -8.0
 bus = &"SFX"
 cooldown = 0.4
 
